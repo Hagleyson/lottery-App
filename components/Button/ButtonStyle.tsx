@@ -10,15 +10,6 @@ export const ContainerButton = styled.View`
   justify-content: center;
   align-items: center;
   ${(props: propsType) =>
-    props.typeStyle === "home" &&
-    ` width: 100%;
-      padding: 15px;
-      border-radius: 100px;
-      margin-top: 30px;
-      background-color: ${theme.greenLemon};
-    `}
-
-  ${(props: propsType) =>
     props.typeStyle === "large" &&
     `width: 100%;
      background-color: transparent;    
@@ -32,13 +23,6 @@ export const TextButton = styled.Text`
   text-align: center;
   font-weight: bold;
   font-style: italic;
-
-  ${(props: propsType) =>
-    props.typeStyle === "home" &&
-    `
-    font-size:35px;
-    color:${theme.white}
-    `}
 
   ${(props: propsType) =>
     props.typeStyle === "large" &&
