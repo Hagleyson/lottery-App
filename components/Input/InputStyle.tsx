@@ -17,6 +17,6 @@ export const InputStyle = styled.TextInput`
   font-style: italic;
   font-size: 17px;
   color: ${theme.textSecondary};
-  border-bottom-width: 1px;
+  border-bottom-width: 2px;
   border-color: ${theme.line};
 `;
