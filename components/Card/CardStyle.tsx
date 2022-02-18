@@ -3,9 +3,11 @@ import { theme } from "../../GlobalStyle/theme";
 
 const CardStyle = styled.View`
   width: 100%;
-  height: auto;
-  padding: 30px;
-  box-shadow: ${theme["box-shadow-cards"]};
-  background-color: ${theme.error};
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 4px;
+  border-color: ${theme.line};
+  border-style: solid;
+  border-width: 2px;
 `;
 export default CardStyle;

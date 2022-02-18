@@ -1,11 +1,13 @@
 import AcountScreen from "./Admin/AcountScreen";
+
 import CartGameScreen from "./Game/CartGameScreen";
 import ListGameScreen from "./Game/ListGameScreen";
 import NewGameScreen from "./Game/NewGameScreen";
 
-import AutenticationScreen from "./Auth/AutenticationScreen";
-import RecoveryScreen from "./Auth/RecoveryScreen";
-import RegisterScreen from "./Auth/RegisterScreen";
+import AutenticationScreen from "./Auth/Autentication/AutenticationScreen";
+import RecoveryScreen from "./Auth/Recovery/RecoveryScreen";
+import RegisterScreen from "./Auth/Register/RegisterScreen";
+import Home from "./Auth/Home/Home";
 
 export {
   AcountScreen,
@@ -15,4 +17,5 @@ export {
   AutenticationScreen,
   RecoveryScreen,
   RegisterScreen,
+  Home,
 };

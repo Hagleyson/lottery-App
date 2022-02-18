@@ -34,12 +34,13 @@ const defaultNavOptions = {
 const AuthNav = createNativeStackNavigator();
 export const AuthNavigation = () => {
   return (
-    <AuthNav.Navigator screenOptions={defaultNavOptions}>
+    <AuthNav.Navigator
+      screenOptions={{ ...defaultNavOptions, headerShown: false }}
+    >
       <AuthNav.Screen
         name="Autentication"
         component={AutenticationScreen}
         // options={AutenticationScreenOptions}
-        options={{ headerShown: false }}
       />
       <AuthNav.Screen
         name="RecoveryScreen"

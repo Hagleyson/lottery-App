@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import { ContainerStyle } from "./ContainerStyle";
 
-const Container = (props: any) => {
+const Container: FC = (props) => {
   return <ContainerStyle>{props.children}</ContainerStyle>;
 };
 
