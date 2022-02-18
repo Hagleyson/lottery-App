@@ -22,12 +22,12 @@ const defaultNavOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? "gold" : "",
   },
-  headerTitleStyle: {
-    fontFamily: "open-sans-bold",
-  },
-  headerBackTitleStyle: {
-    fontFamily: "open-sans",
-  },
+  // headerTitleStyle: {
+  //   fontFamily: "open-sans-bold",
+  // },
+  // headerBackTitleStyle: {
+  //   fontFamily: "open-sans",
+  // },
   headerTintColor: Platform.OS === "android" ? "white" : "gold",
 };
 
@@ -55,32 +55,32 @@ export const AuthNavigation = () => {
   );
 };
 
-const gameNav = createNativeStackNavigator();
+const GameNav = createNativeStackNavigator();
 
-const gameNavigator = () => {
+const GameNavigator = () => {
   return (
-    <gameNav.Navigator screenOptions={defaultNavOptions}>
-      <gameNav.Screen
+    <GameNav.Navigator screenOptions={defaultNavOptions}>
+      <GameNav.Screen
         name="Acount"
         component={AcountScreen}
         // options={AcountScreenOptions}
       />
-      <gameNav.Screen
+      <GameNav.Screen
         name="CartGame"
         component={CartGameScreen}
         // options={CartGameScreenOptions}
       />
-      <gameNav.Screen
+      <GameNav.Screen
         name="ListGame"
         component={ListGameScreen}
         // options={ListGameScreenOptions}
       />
-      <gameNav.Screen
+      <GameNav.Screen
         name="NewGame"
         component={NewGameScreen}
         // options={NewGameScreenOptions}
       />
-    </gameNav.Navigator>
+    </GameNav.Navigator>
   );
 };
 
@@ -91,7 +91,7 @@ export const GameDrawerNavigator = () => {
     <GameDrawerNav.Navigator screenOptions={{ headerShown: true }}>
       <GameDrawerNav.Screen
         name="Game"
-        component={gameNavigator}
+        component={GameNavigator}
         options={{
           drawerIcon: (props) => (
             <Ionicons

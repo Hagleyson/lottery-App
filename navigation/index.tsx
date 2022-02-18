@@ -3,9 +3,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { AuthNavigation, GameDrawerNavigator } from "./GameNavigator";
 
 const AppNavigator = (props: any) => {
+  const isAuth = false;
   return (
     <NavigationContainer>
-      <GameDrawerNavigator />
+      {isAuth ? <GameDrawerNavigator /> : <AuthNavigation />}
     </NavigationContainer>
   );
 };
