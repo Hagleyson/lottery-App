@@ -6,15 +6,13 @@ type containertype={
 }
 export const ContainerStyle = styled.View`
   flex: 1;
-
-  justify-content: center;
-  background-color: ${theme.background};
+  justify-content: center;  
   padding: 15px;
   position: relative;
-  overflow: hidden;  
+  background-color: ${theme.background};
   
   ${(props:containertype)=>props.type ==="list" &&`
-  justify-content: flex-start;
+  justify-content: flex-start;  
   `}
   
   ${(props:containertype)=>props.type ==="filter"&&`    
@@ -25,6 +23,9 @@ export const ContainerStyle = styled.View`
     justify-content: space-between;  
     flex-direction: row
   `}
-  ;
+  ${(props:containertype)=>props.type === "card" &&`
+    margin-top: 40px;
+    padding:10px 0px;  
+  `}
   
 `;

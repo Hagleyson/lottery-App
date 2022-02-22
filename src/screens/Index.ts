@@ -1,5 +1,5 @@
-import AccountScreen from "./Admin/AcountScreen";
-import {screenOptions as AccountScreenOptions} from "./Admin/AcountScreen"
+import AccountScreen from "./Admin/AccountScreen";
+import {screenOptions as AccountScreenOptions} from "./Admin/AccountScreen"
 
 
 import CartGameScreen from "./Game/CartGameScreen";
@@ -14,6 +14,7 @@ import AutenticationScreen from "./Auth/Autentication/AutenticationScreen";
 import RecoveryScreen from "./Auth/Recovery/RecoveryScreen";
 import RegisterScreen from "./Auth/Register/RegisterScreen";
 import Home from "./Auth/Home/Home";
+import { ModalComponent } from "../components";
 
 export {
   AccountScreen,
@@ -26,4 +27,5 @@ export {
   RecoveryScreen,
   RegisterScreen,
   Home,
+  ModalComponent
 };

@@ -5,28 +5,31 @@ type propsType = {
   fontsize?: string;
   color?: string;
   type?: string;
+  centered?:boolean
 };
 
-export const TitleStyle = styled.Text`
+export const TitleStyle = styled.Text` 
   font-weight: bold;
-  font-style: italic;
+  font-style: italic;  
   font-size: ${(props: propsType) => props.fontsize || 25}px;
   color: ${(props: propsType) => props.color || theme.textPrimary};
-  text-align: center;
-
+  text-align: left;  
+  ${(props:propsType)=>props.centered&& `text-align:center`}  
   ${(props: propsType) =>
     props.type === "special"
       && `
       width:200px;
       margin:40px auto;
-    background-color: ${theme.greenLemon};
-    padding:10px ;
-    color:${theme.white};
-    border-radius: 50px;
+      background-color: ${theme.greenLemon};
+      padding:10px ;
+      color:${theme.white};
+      border-radius: 50px;
   `}
 
   ${(props:propsType)=>props.type ==="light"&&`
-    padding: 0px 1px;    
+    
     font-weight: normal;
+    font-size:17px;   
   `}
+  
 `;

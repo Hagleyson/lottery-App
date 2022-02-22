@@ -16,11 +16,11 @@ const Home = (props: any) => {
   }, []);
   return (
     <Container>
-      <Title fontsize="50"> The Greatest App</Title>
-      <Title fontsize="50" type="special">
+      <Title centered fontsize="50"> The Greatest App</Title>
+      <Title centered fontsize="50" type="special">
         For
       </Title>
-      <Title fontsize="50"> LOTTERY</Title>
+      <Title centered fontsize="50"> LOTTERY</Title>
     </Container>
   );
 };

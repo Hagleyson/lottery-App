@@ -5,6 +5,7 @@ type propsType = {
   fontsize?: string;
   color?: string;
   type?: string;
+  centered?:boolean
 };
 
 const Title: FC<propsType> = (props) => {
