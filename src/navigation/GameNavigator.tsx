@@ -1,9 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {
-  createDrawerNavigator,
-  DrawerItemList,
-} from "@react-navigation/drawer";
+import {createDrawerNavigator} from "@react-navigation/drawer";
 
 import { Platform, View, SafeAreaView, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,6 +14,7 @@ import {
   ListGameScreen,
   ListScreenOptions,
   NewGameScreen,
+  NewGameScreenOptions,
   AutenticationScreen,
   RecoveryScreen,
   RegisterScreen,
@@ -66,7 +64,8 @@ const GameNavigator = () => {
       />    
       <GameNav.Screen
         name="NewGame"
-        component={NewGameScreen}        
+        component={NewGameScreen}     
+        options={NewGameScreenOptions}   
       />
       <GameNav.Screen
         name="CartGame"

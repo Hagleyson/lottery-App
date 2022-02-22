@@ -15,7 +15,7 @@ const Home = (props: any) => {
     }, 3000);
   }, []);
   return (
-    <Container>
+    <Container type="initial">
       <Title centered fontsize="50"> The Greatest App</Title>
       <Title centered fontsize="50" type="special">
         For

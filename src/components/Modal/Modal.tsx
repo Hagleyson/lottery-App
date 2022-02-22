@@ -17,7 +17,7 @@ const ModalComponent:FC<propsType> =(props)=>{
         onRequestClose={props.onClose}
         presentationStyle="pageSheet"
         >       
-        <Container type="modalHeader">
+        <Container type="header">
             <Title>Select Filters</Title>   
             <Button icon="md-checkmark" handleClick={props.onClose}/>
         </Container>

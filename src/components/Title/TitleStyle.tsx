@@ -16,7 +16,9 @@ export const TitleStyle = styled.Text`
   text-align: left;    
   padding-right: 5px;
   
+  
   ${(props:propsType)=>props.centered&& `text-align:center`}  
+
   ${(props: propsType) =>
     props.type === "special"
       && `
@@ -30,6 +32,14 @@ export const TitleStyle = styled.Text`
 
   ${(props:propsType)=>props.type ==="light"&&`    
     font-weight: normal;     
+  `}
+  ${(props:propsType)=>props.type ==="description"&&`    
+    margin-top:20px;  
+  `}
+  ${(props:propsType)=>props.type === "ball" && `
+    font-style: normal;  
+    color:${theme.white}
+    text-align:center;
   `}
   
 `;

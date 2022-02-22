@@ -27,7 +27,7 @@ const RecoveryScreen = (props: any) => {
   };
 
   return (
-    <Container>
+    <Container type="initial">
       <Title fontsize="40" centered>Reset password</Title>
       <Card>
         <Input

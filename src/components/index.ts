@@ -1,3 +1,4 @@
+import Ball from "./Ball/Ball"
 import Button from "./Button/Button";
 import Card from "./Card/Card";
 import CardGame from "./CardGame/CardGame";
@@ -9,6 +10,7 @@ import ModalComponent from "./Modal/Modal"
 import Title from "./Title/Title";
 
 export { 
+    Ball,    
     Button, 
     Card, 
     Container, 

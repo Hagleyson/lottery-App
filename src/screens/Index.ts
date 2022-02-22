@@ -9,6 +9,7 @@ import ListGameScreen from "./Game/ListGameScreen";
 import {screenOptions as ListScreenOptions } from "./Game/ListGameScreen"
 
 import NewGameScreen from "./Game/NewGameScreen";
+import {screenOptions as NewGameScreenOptions} from "./Game/NewGameScreen";
 
 import AutenticationScreen from "./Auth/Autentication/AutenticationScreen";
 import RecoveryScreen from "./Auth/Recovery/RecoveryScreen";
@@ -23,9 +24,11 @@ export {
   ListGameScreen,
   ListScreenOptions,
   NewGameScreen,
+  NewGameScreenOptions,
   AutenticationScreen,
   RecoveryScreen,
   RegisterScreen,
   Home,
   ModalComponent
 };
+

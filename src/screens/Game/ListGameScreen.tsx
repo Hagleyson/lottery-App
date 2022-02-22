@@ -16,30 +16,30 @@ const games =[
 ]
 
 const ListGameScreen = (props: any) => {
-  const [modalIsOpen,setModalIsOpen]=useState(true)
+  const [modalIsOpen,setModalIsOpen]=useState(false)
   return (
-     <Container type="list">          
-      <Container type="filter">
-        <Title type="light" fontsize="20">Filters</Title>    
-        <Button icon="md-options-outline" handleClick={()=>setModalIsOpen(true)}/>        
-      </Container>
-      <Container type="card">
-        <FlatList
-          data={games}
-          keyExtractor={(item:any) => item.id}
-          renderItem={(itemData:any) => ( 
-          <CardGame
-              id={itemData.item.id}
-              color={itemData.item.color}
-              numbers={itemData.item.numbers}
-              isHome
-              price={itemData.item.value}
-              name={"Hagleyson"}
-          />)}
-        />
-      </Container>
+    <Container type="first">          
+        <Container type="filter">
+          <Title type="light" fontsize="20">Filters</Title>    
+          <Button icon="md-options-outline" handleClick={()=>setModalIsOpen(true)}/>        
+        </Container>
+        <Container type="card">
+          <FlatList
+            data={games}
+            keyExtractor={(item:any) => item.id}
+            renderItem={(itemData:any) => ( 
+            <CardGame
+                id={itemData.item.id}
+                color={itemData.item.color}
+                numbers={itemData.item.numbers}
+                isHome
+                price={itemData.item.value}
+                name={"Hagleyson"}
+            />)}
+          />
+        </Container>
       {modalIsOpen ?<ModalComponent isVisible={modalIsOpen} onClose={()=>setModalIsOpen(false)}/>:<></>}
-    </Container>        
+    </Container>   
   );
 };
 

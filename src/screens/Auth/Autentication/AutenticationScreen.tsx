@@ -32,7 +32,7 @@ const AutenticationScreen = (props: any) => {
     props.navigation.navigate("Register");
   };
   return (
-    <Container>
+    <Container type="initial">
       <Title fontsize="40" centered>Authentication</Title>
       <Card>
         <Input

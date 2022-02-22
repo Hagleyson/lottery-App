@@ -6,7 +6,7 @@ import { Home } from "../screens/Index";
 const AppNavigator = (props: any) => {
   const [togglePage, setTogglePage] = useState(false);
 
-  const isAuth = false;
+  const isAuth = true;
   const handleRedirect = () => {
     setTogglePage(true);
   };

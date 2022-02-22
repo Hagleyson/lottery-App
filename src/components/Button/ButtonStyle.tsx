@@ -30,11 +30,16 @@ export const ContainerButton = styled.View`
      ${props.selected && `
        background-color:${props.color}
      `}
-  `}
-
-  
-
-     
+  `} 
+   ${(props:propsType)=> props.typeStyle ==="normal" && `
+     padding:10px 10px;
+     border-width: 2px;          
+     border-radius:10px;         
+     border-color:  ${theme.greenLight};
+     ${props.color === "2" && `
+       background-color:${theme.greenLight}       
+     `}
+  `} 
 `;
 
 export const TextButton = styled.Text`
@@ -48,7 +53,7 @@ export const TextButton = styled.Text`
     ` font-size: 35px;
       color:${theme.textPrimary}      
   `}
-
+  
   ${(props: propsType) =>
     props.color === "green" && `color:${theme.greenLemon}`}
 
@@ -56,5 +61,8 @@ export const TextButton = styled.Text`
     color: ${props.selected ? theme.white:props.color};
     font-size:20px;    
   `}
- 
+  ${(props:propsType)=>props.typeStyle === "normal" &&`
+    font-style:normal;
+    color:${props.color === "2" ?theme.white:theme.greenLight};    
+  `} 
 `;
