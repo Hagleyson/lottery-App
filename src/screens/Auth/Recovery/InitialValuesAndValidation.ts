@@ -6,6 +6,6 @@ export const RecoveryInitialValue = {
 export const RecoveryValidations = yup.object({
   email: yup
     .string()
-    .email("Digite um E-mail válido!")
-    .required("Email é Obrigatório!"),
+    .email("Please enter a valid email address!")
+    .required("Mandatory email!"),
 });

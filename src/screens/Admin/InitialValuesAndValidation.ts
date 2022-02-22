@@ -1,14 +1,14 @@
 import * as yup from "yup";
 
-export const LoginInitialValues = {
+export const AccountInitialValue = {
   email: "",
-  password: "",
+  name: "",
 };
 
-export const LoginValidations = yup.object({
+export const AccountValidations = yup.object({
   email: yup
     .string()
     .email("Please enter a valid email address!")
     .required("Mandatory email!"),
-  password: yup.string().required("Type your password!"),
+  name: yup.string().required("Type your name!"),
 });

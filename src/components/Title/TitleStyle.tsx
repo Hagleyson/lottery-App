@@ -13,7 +13,9 @@ export const TitleStyle = styled.Text`
   font-style: italic;  
   font-size: ${(props: propsType) => props.fontsize || 25}px;
   color: ${(props: propsType) => props.color || theme.textPrimary};
-  text-align: left;  
+  text-align: left;    
+  padding-right: 5px;
+  
   ${(props:propsType)=>props.centered&& `text-align:center`}  
   ${(props: propsType) =>
     props.type === "special"
@@ -26,10 +28,8 @@ export const TitleStyle = styled.Text`
       border-radius: 50px;
   `}
 
-  ${(props:propsType)=>props.type ==="light"&&`
-    
-    font-weight: normal;
-    font-size:17px;   
+  ${(props:propsType)=>props.type ==="light"&&`    
+    font-weight: normal;     
   `}
   
 `;

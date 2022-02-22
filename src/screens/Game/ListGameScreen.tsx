@@ -1,25 +1,27 @@
 import React, {  useState } from "react";
-import {  FlatList, Platform,  TouchableOpacity } from "react-native";
+import {  FlatList, Platform} from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import { Title,Container,HeaderButton as CustomHeaderButton,ModalComponent,CardGame } from "../../components";
-import { Ionicons } from "@expo/vector-icons";
-import { theme } from "../../GlobalStyle";
+import { Title,Container,HeaderButton as CustomHeaderButton,ModalComponent,CardGame, Button } from "../../components";
+
 const games =[
   {id:1,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  },
   {id:2,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  },
-  {id:3,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  }
+  {id:3,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  },
+  {id:11,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  },
+  {id:21,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  },
+  {id:31,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  },
+  {id:12,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  },
+  {id:23,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  },
+  {id:34,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:"2,50",game:"Lotofacil",color:"#7F3992"  }
 ]
 
 const ListGameScreen = (props: any) => {
-  const [modalIsOpen,setModalIsOpen]=useState(false)
+  const [modalIsOpen,setModalIsOpen]=useState(true)
   return (
-    <>
-    <Container type="list">          
+     <Container type="list">          
       <Container type="filter">
-        <Title type="light">Filters</Title>    
-        <TouchableOpacity onPress={()=>setModalIsOpen(true)}>
-          <Ionicons name="md-options-outline" size={30} color={theme.textPrimary}/>
-        </TouchableOpacity>
+        <Title type="light" fontsize="20">Filters</Title>    
+        <Button icon="md-options-outline" handleClick={()=>setModalIsOpen(true)}/>        
       </Container>
       <Container type="card">
         <FlatList
@@ -36,13 +38,8 @@ const ListGameScreen = (props: any) => {
           />)}
         />
       </Container>
-      
-      {modalIsOpen ?<ModalComponent isVisible={modalIsOpen} onClose={()=>setModalIsOpen(false)}></ModalComponent>:<></>}
-        
-      
-    </Container>
-    
-    </>
+      {modalIsOpen ?<ModalComponent isVisible={modalIsOpen} onClose={()=>setModalIsOpen(false)}/>:<></>}
+    </Container>        
   );
 };
 

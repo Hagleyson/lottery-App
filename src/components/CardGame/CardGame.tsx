@@ -1,6 +1,6 @@
 import React from "react"
 import { TouchableOpacity, View } from "react-native";
-import {  Title } from ".."
+import   Title  from "../Title/Title"
 import { CardGamesStyle, Line } from "./CardGameStyle"
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from "../../GlobalStyle";
@@ -32,7 +32,7 @@ const CardGame =(props:propsType)=>{
       <Title fontsize={`${props.isHome ? "20" : "15"}`}>
         {formattedNumbers.join(", ")}
       </Title>
-      {props.isHome ? <Title type="light">{`20/01/2022 - (${"R$ 2,50"})`}</Title> : null}
+      {props.isHome ? <Title type="light" fontsize="17">{`20/01/2022 - (${"R$ 2,50"})`}</Title> : null}
       <Title fontsize={`${props.isHome ? "20" : "17"}`}  color={props.color}>
         {props.name}
         {!props.isHome ? <Title type="light">{convertToReal(props.price)}</Title> : null}

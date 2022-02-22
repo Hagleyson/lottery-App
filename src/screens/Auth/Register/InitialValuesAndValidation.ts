@@ -7,10 +7,10 @@ export const RegisterInitialValues = {
 };
 
 export const RegisterValidations = yup.object({
-  user: yup.string().required("Usuário é obrigatório"),
+  user: yup.string().required("User is required!"),
   email: yup
     .string()
-    .email("Digite um E-mail válido!")
-    .required("Email é Obrigatório!"),
-  password: yup.string().required("Digite sua senha!"),
+    .email("Please enter a valid email address!")
+    .required("Mandatory email!"),
+  password: yup.string().required("Type your password!"),
 });

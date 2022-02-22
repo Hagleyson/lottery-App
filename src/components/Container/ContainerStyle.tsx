@@ -27,5 +27,17 @@ export const ContainerStyle = styled.View`
     margin-top: 40px;
     padding:10px 0px;  
   `}
+  ${(props:containertype)=>props.type === "modalHeader" && `
+    width: 100%;    
+    padding:10px;   
+    position:absolute;
+    elevation:15;     
+    justify-content: space-between;  
+    align-items: center;  
+    flex-direction: row
+    margin-bottom:40px;
+  `}
+  
+  
   
 `;
