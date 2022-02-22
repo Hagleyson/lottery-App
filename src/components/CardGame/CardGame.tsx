@@ -28,7 +28,7 @@ const CardGame =(props:propsType)=>{
 
     <Line color={props.color}/>
 
-    <View style={{width:"100%",height:"80%",justifyContent:"space-between"}}>      
+    <View style={{width:"100%",height:"100%",justifyContent:"space-between"}}>      
       <Title fontsize={`${props.isHome ? "20" : "15"}`}>
         {formattedNumbers.join(", ")}
       </Title>

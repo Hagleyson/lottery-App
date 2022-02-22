@@ -11,7 +11,8 @@ type propsType = {
     height: 120px;    
     justify-content: space-evenly;        
     text-align: left;    
-    padding: 0px 10px;    
+    padding: 5px 10px;    
+
     
   `
 
@@ -20,7 +21,7 @@ type propsType = {
   }
   export const Line = styled.View`
     width: 5px;
-    height: 100px;
+    height: 110px;
     margin-right :10px ;    
     border-radius: 10px;
     background-color: ${(props:lineType)=>props.color||"#000000"};
