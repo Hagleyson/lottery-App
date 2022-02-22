@@ -28,7 +28,7 @@ const RecoveryScreen = (props: any) => {
 
   return (
     <Container>
-      <Title fontsize="40">Reset password</Title>
+      <Title fontsize="40" centered>Reset password</Title>
       <Card>
         <Input
           input={{

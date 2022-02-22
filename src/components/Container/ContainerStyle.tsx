@@ -6,7 +6,7 @@ type containertype={
 }
 export const ContainerStyle = styled.View`
   flex: 1;
-  justify-content: center;  
+  justify-content: center;    
   padding: 15px;
   position: relative;
   background-color: ${theme.background};
@@ -36,6 +36,8 @@ export const ContainerStyle = styled.View`
     align-items: center;  
     flex-direction: row
     margin-bottom:40px;
+      
+
   `}
   
   

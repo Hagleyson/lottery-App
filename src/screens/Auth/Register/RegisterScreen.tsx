@@ -27,7 +27,7 @@ const RegisterScreen = (props: any) => {
 
   return (
     <Container>
-      <Title fontsize="40">Registration</Title>
+      <Title fontsize="40" centered>Registration</Title>
       <Card>
         <Input
           input={{

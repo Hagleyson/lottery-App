@@ -17,7 +17,7 @@ const AcountScreen = (props: any) => {
     props.navigation.navigate("Register");
   };
   return <Container>
-  <Title fontsize="40">Update</Title>
+  <Title fontsize="40" centered>Update</Title>
   <Card>
     <Input
         input={{

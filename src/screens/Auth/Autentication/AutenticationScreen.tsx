@@ -33,7 +33,7 @@ const AutenticationScreen = (props: any) => {
   };
   return (
     <Container>
-      <Title fontsize="40">Authentication</Title>
+      <Title fontsize="40" centered>Authentication</Title>
       <Card>
         <Input
           input={{
