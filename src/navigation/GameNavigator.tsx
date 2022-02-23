@@ -104,6 +104,7 @@ const drawerConfig={
   
 }
 export const GameDrawerNavigator = () => {
+  console.log("entrou")
   return (
     <GameDrawerNav.Navigator  screenOptions={{...drawerConfig,...defaultNavOptions}}>
       <GameDrawerNav.Screen
