@@ -1,12 +1,24 @@
 import { Platform } from "react-native";
-import "react-native-gesture-handler";
-import AppNavigator from "./src/navigation";
+import { Provider } from "react-redux";
 
-if(Platform.OS === 'android') { // only android needs polyfill
-  require('intl'); // import intl object
-  require('intl/locale-data/jsonp/pt-BR'); // load the required locale details
+
+import AppNavigator from "./src/navigation";
+import {store} from "./src/store"
+
+import Toast from 'react-native-toast-message';
+
+if(Platform.OS === 'android') { 
+  require('intl'); 
+  require('intl/locale-data/jsonp/pt-BR'); 
 }
 
+
+
 export default function App() {
-  return <AppNavigator />;
+  return (
+    <Provider store={store}>      
+      <AppNavigator />
+      <Toast />
+    </Provider>
+  );
 }

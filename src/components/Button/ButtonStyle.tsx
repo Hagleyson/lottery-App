@@ -44,8 +44,8 @@ export const ContainerButton = styled.View`
   `}
 
   ${(props:propsType)=> props.typeStyle === "save" &&`
-     width: 100%;
-     background-color: transparent;        
+     width: 100%;      
+     background-color: ${theme.buttonSave};        
      padding:25px;
      border-top-width: 2px;     
      border-color:${theme.line}
@@ -76,7 +76,8 @@ export const TextButton = styled.Text`
     color:${props.color === "2" ?theme.white:theme.greenLight};    
   `} 
   ${(props:propsType)=> props.typeStyle === "save" &&`
-     color:${theme.greenBold}
+     color:${theme.greenBold};
+     
      font-size:40px
   `}
   

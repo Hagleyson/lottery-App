@@ -1,7 +1,6 @@
 import React from "react";
-import { Text } from "react-native";
 import { InputStyle, InputContainer } from "./InputStyle";
-
+import Title from "../Title/Title"
 type propsType = {
   input?: {};
   error?: string | null;
@@ -10,8 +9,9 @@ type propsType = {
 const Input = (props: propsType) => {
   return (
     <InputContainer>
-      {props.error ? <Text>{props.error}</Text> : null}
+      
       <InputStyle /*error={!!props.error}*/ {...props.input} />
+      {props.error ? <Title type="erroInput" >{props.error}</Title> : null}
     </InputContainer>
   );
 };

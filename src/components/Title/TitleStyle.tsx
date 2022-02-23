@@ -41,5 +41,8 @@ export const TitleStyle = styled.Text`
     color:${theme.white}
     text-align:center;
   `}
-  
+  ${(props:propsType)=>props.type === "erroInput" && `
+    font-size:14px;
+    color:${theme.error}
+  `}
 `;

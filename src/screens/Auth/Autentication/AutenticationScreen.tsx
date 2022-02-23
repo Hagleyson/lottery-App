@@ -13,14 +13,19 @@ import {
   LoginValidations,
 } from "./InitialValuesAndValidation";
 
+import { useDispatch } from "react-redux";
+
 import { useFormik } from "formik";
+import{actions} from "../../../store"
+
 
 const AutenticationScreen = (props: any) => {
+  const dispatch =useDispatch()
   const formik = useFormik({
     initialValues: LoginInitialValues,
     validationSchema: LoginValidations,
-    onSubmit: async (values, formikBag) => {
-      console.log(values);
+    onSubmit: async (values, formikBag) => {      
+      dispatch(actions.login(values.email,values.password))      
     },
   });
 
@@ -44,6 +49,10 @@ const AutenticationScreen = (props: any) => {
             autoFocus: true,
             placeholder: "Email",
           }}
+          error={
+            formik.errors.email && formik.touched.email
+            ?formik.errors.email:null
+          }
         />
         <Input
           input={{
@@ -53,6 +62,10 @@ const AutenticationScreen = (props: any) => {
             secureTextEntry: true,
             placeholder: "Password",
           }}
+          error={
+            formik.errors.password && formik.touched.password
+            ?formik.errors.password:null
+          }
         />
         <Link handleClick={handleRercovery}>I forget my password</Link>
         <Button
