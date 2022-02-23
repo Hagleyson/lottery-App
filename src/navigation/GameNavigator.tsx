@@ -11,6 +11,7 @@ import {
   AccountScreen,
   AccountScreenOptions,
   CartGameScreen,
+  CartGameScreenOptions,
   ListGameScreen,
   ListScreenOptions,
   NewGameScreen,
@@ -70,6 +71,7 @@ const GameNavigator = () => {
       <GameNav.Screen
         name="CartGame"
         component={CartGameScreen}
+        options={CartGameScreenOptions}
       />
     </GameNav.Navigator>
   );

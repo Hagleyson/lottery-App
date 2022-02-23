@@ -3,7 +3,7 @@ import {screenOptions as AccountScreenOptions} from "./Admin/AccountScreen"
 
 
 import CartGameScreen from "./Game/CartGameScreen";
-
+import { screenOptions as CartGameScreenOptions } from "./Game/CartGameScreen";
 
 import ListGameScreen from "./Game/ListGameScreen";
 import {screenOptions as ListScreenOptions } from "./Game/ListGameScreen"
@@ -21,6 +21,7 @@ export {
   AccountScreen,
   AccountScreenOptions,
   CartGameScreen,
+  CartGameScreenOptions,
   ListGameScreen,
   ListScreenOptions,
   NewGameScreen,

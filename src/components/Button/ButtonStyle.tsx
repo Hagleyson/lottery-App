@@ -10,7 +10,6 @@ type propsType = {
 export const ContainerButton = styled.View`
   justify-content: center;
   align-items: center;
-  ; 
 
   ${(props: propsType) =>
     props.typeStyle === "large" &&
@@ -40,6 +39,17 @@ export const ContainerButton = styled.View`
        background-color:${theme.greenLight}       
      `}
   `} 
+  ${(props:propsType)=>props.typeStyle==="icon" &&`
+    padding:20px;
+  `}
+
+  ${(props:propsType)=> props.typeStyle === "save" &&`
+     width: 100%;
+     background-color: transparent;        
+     padding:25px;
+     border-top-width: 2px;     
+     border-color:${theme.line}
+  `}
 `;
 
 export const TextButton = styled.Text`
@@ -65,4 +75,9 @@ export const TextButton = styled.Text`
     font-style:normal;
     color:${props.color === "2" ?theme.white:theme.greenLight};    
   `} 
+  ${(props:propsType)=> props.typeStyle === "save" &&`
+     color:${theme.greenBold}
+     font-size:40px
+  `}
+  
 `;

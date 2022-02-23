@@ -2,19 +2,21 @@ import styled from "styled-components/native";
 import { theme } from "../../GlobalStyle/theme";
 
 type containertype={
-  type?:string
+  type?:string,
+  padding?:number
 }
 export const ContainerStyle = styled.View` 
-  padding: 15px;
+  padding: ${(props)=> props.padding !== undefined ?props.padding:15}px;
   position: relative;
   background-color: ${theme.background};
   ${(props:containertype)=>props.type === "initial" &&`
     flex:1;
     justify-content: center;   
   `}
+
   ${(props:containertype)=>props.type ==="first" &&`
     justify-content: flex-start;      
-    flex:1;
+    flex:1;    
   `}
   
   ${(props:containertype)=>props.type ==="filter" &&`    
@@ -46,6 +48,10 @@ export const ContainerStyle = styled.View`
     margin-top:30px;
     justify-content: flex-start;      
     padding:15px 4px;    
+  `}
+  ${(props:containertype)=>props.type === "textCart" && `    
+    justify-content: flex-start;      
+    padding:15px 10px;    
   `}
 
   ${(props:containertype)=>props.type === "game" && `    

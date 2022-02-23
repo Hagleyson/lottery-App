@@ -1,11 +1,10 @@
 import React from "react"
-import { TouchableOpacity, View } from "react-native";
 import   Title  from "../Title/Title"
-import { CardGamesStyle, Line } from "./CardGameStyle"
-import { Ionicons } from "@expo/vector-icons";
-import { theme } from "../../GlobalStyle";
+import  Button  from "../Button/Button";
+import { CardGamesStyle, ContentCard, Line } from "./CardGameStyle"
 
 import { convertToReal } from "../../shared";
+
 
 type propsType={
     color?: string;
@@ -18,26 +17,24 @@ type propsType={
 }
 const CardGame =(props:propsType)=>{
   const formattedNumbers = props.numbers.map((n) => (n < 10 ? `0${n}` : `${n}`));
-    return  <CardGamesStyle /*color={props.color} isHome={isHome}*/>
+    return  <CardGamesStyle isHome>
    
     {!props.isHome ? (
-      <TouchableOpacity onPress={() => (props.onDelete ? props.onDelete(props.id, props.price) : () => {})}>
-        <Ionicons name="md-trash-outline" size={30} color={theme.textPrimary} />
-      </TouchableOpacity>
+      <Button typeStyle="icon" icon="md-trash-outline" handleClick={() => (props.onDelete ? props.onDelete(props.id, props.price) : () => {})}/> 
     ) : null}
-
+    
     <Line color={props.color}/>
 
-    <View style={{width:"100%",height:"100%",justifyContent:"space-between"}}>      
-      <Title fontsize={`${props.isHome ? "20" : "15"}`}>
+    <ContentCard isHome={props.isHome} >      
+      <Title fontsize="20">
         {formattedNumbers.join(", ")}
       </Title>
       {props.isHome ? <Title type="light" fontsize="17">{`20/01/2022 - (${"R$ 2,50"})`}</Title> : null}
-      <Title fontsize={`${props.isHome ? "20" : "17"}`}  color={props.color}>
-        {props.name}
-        {!props.isHome ? <Title type="light">{convertToReal(props.price)}</Title> : null}
+      <Title fontsize= "20"  color={props.color}>
+        {`${props.name} `}
+        {!props.isHome ? <Title type="light" fontsize="20">{convertToReal(props.price)}</Title> : null}
       </Title>
-    </View>
+    </ContentCard>
 
   </CardGamesStyle>
 }
