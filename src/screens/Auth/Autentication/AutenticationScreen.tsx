@@ -45,8 +45,7 @@ const AutenticationScreen = (props: any) => {
             onChangeText: formik.handleChange("email"),
             onBlur: formik.handleBlur("email"),
             value: formik.values.email,
-            autoComplete: "email",
-            autoFocus: true,
+            autoComplete: "email",            
             placeholder: "Email",
           }}
           error={

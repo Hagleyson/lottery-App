@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Button,
   Card,
@@ -6,18 +7,25 @@ import {
   Input,
   Title,
 } from "../../../components/index";
+
 import { useFormik } from "formik";
+
 import {
   RegisterInitialValues,
   RegisterValidations,
 } from "./InitialValuesAndValidation";
+import { createUser } from "../../../shared";
 
 const RegisterScreen = (props: any) => {
   const formik = useFormik({
     initialValues: RegisterInitialValues,
     validationSchema: RegisterValidations,
-    onSubmit: async (values, formikBag) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const response = await createUser(values.user,values.email,values.password)
+      if(response){
+        props.navigation.navigate("Autentication")
+      }
+
     },
   });
 
@@ -33,10 +41,13 @@ const RegisterScreen = (props: any) => {
           input={{
             onChangeText: formik.handleChange("user"),
             onBlur: formik.handleBlur("user"),
-            value: formik.values.user,
-            autoFocus: true,
+            value: formik.values.user,            
             placeholder: "Name",
           }}
+          error={
+            formik.errors.user && formik.touched.user
+            ?formik.errors.user:null
+          }
         />
         <Input
           input={{
@@ -46,6 +57,10 @@ const RegisterScreen = (props: any) => {
             autoComplete: "email",
             placeholder: "Email",
           }}
+          error={
+            formik.errors.email && formik.touched.email
+            ?formik.errors.email:null
+          }
         />
         <Input
           input={{
@@ -54,9 +69,13 @@ const RegisterScreen = (props: any) => {
             value: formik.values.password,
             placeholder: "Password",
           }}
+          error={
+            formik.errors.password && formik.touched.password
+            ?formik.errors.password:null
+          }
         />
         <Button
-          title="Send link"
+          title="Register"
           typeStyle="large"
           color="green"
           handleClick={formik.handleSubmit}
