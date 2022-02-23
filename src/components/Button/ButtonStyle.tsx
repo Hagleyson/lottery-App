@@ -10,13 +10,14 @@ type propsType = {
 export const ContainerButton = styled.View`
   justify-content: center;
   align-items: center;
-
+  
   ${(props: propsType) =>
     props.typeStyle === "large" &&
     `width: 100%;
      background-color: transparent; 
      margin-top: 5px;      
      padding:10px;
+     flex-direction: row;     
   `};
    
   ${(props:propsType)=> props.typeStyle ==="filter" && `
@@ -53,15 +54,16 @@ export const ContainerButton = styled.View`
 `;
 
 export const TextButton = styled.Text`
-  width: 100%;
+  width: 100%; 
   text-align: center;
   font-weight: bold;
   font-style: italic;
 
   ${(props: propsType) =>
     props.typeStyle === "large" &&
-    ` font-size: 35px;
-      color:${theme.textPrimary}      
+    `        
+    font-size: 35px;
+    color:${theme.textPrimary}      
   `}
   
   ${(props: propsType) =>

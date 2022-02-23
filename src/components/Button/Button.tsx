@@ -12,17 +12,24 @@ type propsType = {
   handleClick: () => void;
   selected?:boolean;
   icon?:any;
+  left?:boolean;
+  right?:boolean
 };
 
 const Button = (props: propsType) => {
   return (
     <TouchableOpacity onPress={props.handleClick}>
       <ContainerButton typeStyle={props.typeStyle} selected={props.selected} color={props.color}>
-        
+       
         {props.title && <TextButton typeStyle={props.typeStyle} selected={props.selected} color={props.color}>
+          {props.right && <Ionicons name={"md-arrow-back-outline"} size={40}/>}
           {props.title}          
+          {props.left && <Ionicons name={"md-arrow-forward"} size={40}/>}
         </TextButton>}
-          {props.icon && <Ionicons name={props.icon} size={30} color={theme.textPrimary}/> }
+
+       
+
+        {props.icon && <Ionicons name={props.icon} size={30} color={theme.textPrimary}/> }
       </ContainerButton>
     </TouchableOpacity>
   );

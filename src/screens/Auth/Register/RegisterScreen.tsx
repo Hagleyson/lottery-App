@@ -80,9 +80,10 @@ const RegisterScreen = (props: any) => {
           typeStyle="large"
           color="green"
           handleClick={formik.handleSubmit}
+          left
         />
       </Card>
-      <Button title="Back" typeStyle="large" handleClick={handleRedirect} />
+      <Button title="Back" right typeStyle="large" handleClick={handleRedirect} />
     </Container>
   );
 };

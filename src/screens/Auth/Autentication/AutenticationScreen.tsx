@@ -72,11 +72,12 @@ const AutenticationScreen = (props: any) => {
         <Button
           title="Log In"
           typeStyle="large"
-          color="green"
+          color="green" 
+          left          
           handleClick={formik.handleSubmit}
         />
       </Card>
-      <Button title="Sign Up" typeStyle="large" handleClick={handleSignUp} />
+      <Button left title="Sign Up" typeStyle="large" handleClick={handleSignUp} />
     </Container>
   );
 };

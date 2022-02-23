@@ -35,7 +35,7 @@ const CartGameScreen = (props: any) => {
       <Container type="textCart">
         <Title >CART <Title type="light">TOTAL: {convertToReal(1000)}</Title></Title>                  
       </Container>      
-      <Button title="Save" typeStyle="save" color="green" handleClick={()=>{}}/>
+      <Button title="Save" left typeStyle="save" color="green" handleClick={()=>{}}/>
     </Container>   
   );
 };
