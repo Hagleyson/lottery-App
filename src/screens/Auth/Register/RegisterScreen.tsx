@@ -68,6 +68,7 @@ const RegisterScreen = (props: any) => {
             onBlur: formik.handleBlur("password"),
             value: formik.values.password,
             placeholder: "Password",
+            secureTextEntry: true,
           }}
           error={
             formik.errors.password && formik.touched.password

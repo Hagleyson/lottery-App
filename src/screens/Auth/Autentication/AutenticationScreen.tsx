@@ -21,13 +21,15 @@ import{actions} from "../../../store"
 
 const AutenticationScreen = (props: any) => {
   const dispatch =useDispatch()
+
   const formik = useFormik({
     initialValues: LoginInitialValues,
     validationSchema: LoginValidations,
-    onSubmit: async (values, formikBag) => {      
-      dispatch(actions.login(values.email,values.password))      
+    onSubmit: async (values) => {      
+      dispatch(actions.login(values.email,values.password))            
     },
-  });
+  })
+
 
   const handleRercovery = () => {
     props.navigation.navigate("RecoveryScreen");
@@ -35,7 +37,7 @@ const AutenticationScreen = (props: any) => {
 
   const handleSignUp = () => {
     props.navigation.navigate("Register");
-  };
+  };  
   return (
     <Container type="initial">
       <Title fontsize="40" centered>Authentication</Title>

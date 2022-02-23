@@ -1,6 +1,6 @@
 import { API } from "./api";
 import Toast from 'react-native-toast-message';
-
+import { msgError,msgSuccess } from '../helpers/msg'
 export const loginUser = async (email: string, password: string) => {
   const data = JSON.stringify({ email, password });
   try {
@@ -18,11 +18,7 @@ export const loginUser = async (email: string, password: string) => {
     }
     throw new Error();
   } catch (error) {    
-    Toast.show({
-      type: 'error',
-      text1: 'Error',
-      text2: `${error}`
-    });  
+    msgError(`${error}`)    
     return false;
   }
 };

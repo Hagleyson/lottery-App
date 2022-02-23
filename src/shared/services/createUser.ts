@@ -1,6 +1,6 @@
 import { API } from "./api";
 import Toast from 'react-native-toast-message';
-
+import { msgError } from "../helpers/msg";
 export const createUser = async (
   user: string,
   email: string,
@@ -23,11 +23,7 @@ export const createUser = async (
     }
     throw new Error(response.data.error.message);
   } catch (error) {
-    Toast.show({
-        type: 'error',
-        text1: 'Error',
-        text2: `${error}`
-      });  
+    msgError(`${error}`)    
     return false;
   }
 };

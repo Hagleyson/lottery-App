@@ -12,13 +12,17 @@ import {
   RecoveryInitialValue,
   RecoveryValidations,
 } from "./InitialValuesAndValidation";
+import { resetPassword } from "../../../shared";
 
 const RecoveryScreen = (props: any) => {
   const formik = useFormik({
     initialValues: RecoveryInitialValue,
     validationSchema: RecoveryValidations,
-    onSubmit: async (values, formikBag) => {
-      console.log(values);
+    onSubmit: async (values) => {
+     const response = await resetPassword(values.email)
+      if(response){
+        props.navigation.navigate("Autentication")
+      }
     },
   });
 
@@ -39,6 +43,7 @@ const RecoveryScreen = (props: any) => {
             autoFocus: true,
             placeholder: "Email",
           }}
+          error={formik.errors.email && formik.touched.email ?formik.errors.email:null}
         />
         <Button
           title="Send link"

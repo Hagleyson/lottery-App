@@ -1,6 +1,17 @@
 import { convertToReal } from "./helpers/convertToReal";
-import {loginUser} from "./services/loginLogout"
 import {createSession,getSession} from "./helpers/localStorage"
-import {createUser} from "./services/createUser"
+import { msgError,msgSuccess } from "./helpers/msg";
 
-export {convertToReal,loginUser,createSession,getSession,createUser}
+import {loginUser} from "./services/loginLogout"
+import {createUser} from "./services/createUser"
+import { resetPassword } from "./services/resetPassword";
+export {
+  convertToReal,
+  createSession,
+  getSession,
+  msgError,
+  msgSuccess,
+  loginUser,  
+  createUser,
+  resetPassword
+}
