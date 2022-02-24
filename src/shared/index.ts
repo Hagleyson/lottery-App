@@ -8,7 +8,7 @@ import {loginUser} from "./services/login"
 import {createUser} from "./services/createUser"
 import { resetPassword } from "./services/resetPassword";
 import { updateUser } from "./services/account";
-
+import {interceptors} from "./services/api"
 export {
   convertToReal,
   createSession,
@@ -19,5 +19,6 @@ export {
   loginUser,    
   createUser,
   resetPassword,
-  updateUser
+  updateUser,
+  interceptors
 }

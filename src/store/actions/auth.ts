@@ -1,4 +1,4 @@
-import { createSession, loginUser,destroySession } from "../../shared";
+import { createSession, destroySession,loginUser } from "../../shared/";
 
 export const AUTHENTICATE = "AUTHENTICATE";
 

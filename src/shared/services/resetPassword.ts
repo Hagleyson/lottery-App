@@ -1,4 +1,3 @@
-import Toast from 'react-native-toast-message';
 import { API } from "./api";
 import { msgError,msgSuccess } from '../helpers/msg';
 
