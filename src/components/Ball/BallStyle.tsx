@@ -1,8 +1,10 @@
 import styled from "styled-components/native";
 import { theme } from "../../GlobalStyle";
-
-export const BallStyle = styled.View`
-    background-color: ${theme.ball};
+type BallType ={
+    color?:string
+}
+export const BallStyle = styled.TouchableOpacity`
+    background-color: ${(props:BallType)=> props.color?props.color:theme.ball};
     justify-content: center;
     align-items: center;    
     border-radius: 28px;

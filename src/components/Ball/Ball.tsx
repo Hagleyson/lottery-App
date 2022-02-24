@@ -4,9 +4,11 @@ import { BallStyle } from "./BallStyle";
 
 type propsType={
     number:string
+    color?:string
+    onClick:()=>void
 }
 const Ball:FC<propsType> =(props)=>{
-    return <BallStyle>
+    return <BallStyle color={props.color} onPress={props.onClick}>
         <Title type="ball">{props.number}</Title>
     </BallStyle>
 }

@@ -15,3 +15,10 @@ export  const msgError=(text:string)=>{
         text2: text
       });
 }
+
+export  const msgInfo=(text:string)=>{
+  Toast.show({
+      type: 'info',
+      text1: text,      
+    });
+}
