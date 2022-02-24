@@ -15,7 +15,7 @@ const AppNavigator = (props: any) => {
   const  dispatch = useDispatch()
   
   const handleRedirect = async () => {
-    const token = await getSession()
+    const token = await getSession()    
     dispatch(actions.auth(token))
     setTogglePage(true);    
   };

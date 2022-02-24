@@ -6,6 +6,7 @@ import Container from "./Container/Contaneir";
 import HeaderButton from "./HeaderButton/HeaderButton"
 import Input from "./Input/Input";
 import Link from "./Link/Link";
+import Loader from "./Loader/Loader";
 import ModalComponent from "./Modal/Modal"
 import Title from "./Title/Title";
 
@@ -16,6 +17,7 @@ export {
     Container, 
     Input, 
     Link, 
+    Loader,
     Title,
     HeaderButton,
     ModalComponent,

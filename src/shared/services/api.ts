@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { destroySession, getSession } from "@helpers/localStorage";
+import { /*destroySession,*/ getSession } from "../helpers/localStorage";
 
 const API = axios.create({
   baseURL: "http://192.168.1.12:3333",
@@ -9,14 +9,13 @@ const API = axios.create({
   },
 });
 
-API.interceptors.request.use((config) => {
-  // const sessionObject = getSession();
-  // if (sessionObject) {
-  //   config.headers = {
-  //     Authorization: `${sessionObject.type} ${sessionObject.token}`,
-  //   };
-  // }
-
+API.interceptors.request.use(async(config) => {  
+  const sessionObject = await getSession();  
+  if (sessionObject) {
+    config.headers = {
+      Authorization: `Bearer ${sessionObject}`,
+    };
+  }
   return config;
 });
 

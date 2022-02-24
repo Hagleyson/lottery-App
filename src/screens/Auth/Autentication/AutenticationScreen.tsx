@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Card,
   Container,
   Input,
   Link,
+  Loader,
   Title,
 } from "../../../components/index";
 
@@ -17,10 +18,12 @@ import { useDispatch } from "react-redux";
 
 import { useFormik } from "formik";
 import{actions} from "../../../store"
+import { getSession } from "../../../shared";
 
 
 const AutenticationScreen = (props: any) => {
   const dispatch =useDispatch()
+  const [isLoading,setIsLoading]=useState(false)
 
   const formik = useFormik({
     initialValues: LoginInitialValues,
@@ -38,46 +41,62 @@ const AutenticationScreen = (props: any) => {
   const handleSignUp = () => {
     props.navigation.navigate("Register");
   };  
+  useEffect(()=>{
+    const hasToken =async()=>{
+      setIsLoading(true)
+      const token = await getSession()   
+      if(token) dispatch(actions.auth(token)) 
+      setIsLoading(false)
+    }
+    hasToken()
+  },[])
+
   return (
     <Container type="initial">
-      <Title fontsize="40" centered>Authentication</Title>
-      <Card>
-        <Input
-          input={{
-            onChangeText: formik.handleChange("email"),
-            onBlur: formik.handleBlur("email"),
-            value: formik.values.email,
-            autoComplete: "email",            
-            placeholder: "Email",
-          }}
-          error={
-            formik.errors.email && formik.touched.email
-            ?formik.errors.email:null
-          }
-        />
-        <Input
-          input={{
-            onChangeText: formik.handleChange("password"),
-            onBlur: formik.handleBlur("password"),
-            value: formik.values.password,
-            secureTextEntry: true,
-            placeholder: "Password",
-          }}
-          error={
-            formik.errors.password && formik.touched.password
-            ?formik.errors.password:null
-          }
-        />
-        <Link handleClick={handleRercovery}>I forget my password</Link>
-        <Button
-          title="Log In"
-          typeStyle="large"
-          color="green" 
-          left          
-          handleClick={formik.handleSubmit}
-        />
-      </Card>
-      <Button left title="Sign Up" typeStyle="large" handleClick={handleSignUp} />
+      {isLoading ?
+      <Loader/>:
+      <>
+        <Title fontsize="40" centered>Authentication</Title>
+        <Card>
+          <Input
+            input={{
+              onChangeText: formik.handleChange("email"),
+              onBlur: formik.handleBlur("email"),
+              value: formik.values.email,
+              autoComplete: "email",            
+              placeholder: "Email",
+            }}
+            error={
+              formik.errors.email && formik.touched.email
+              ?formik.errors.email:null
+            }
+          />
+          <Input
+            input={{
+              onChangeText: formik.handleChange("password"),
+              onBlur: formik.handleBlur("password"),
+              value: formik.values.password,
+              secureTextEntry: true,
+              placeholder: "Password",
+            }}
+            error={
+              formik.errors.password && formik.touched.password
+              ?formik.errors.password:null
+            }
+          />
+          <Link handleClick={handleRercovery}>I forget my password</Link>
+          <Button
+            title="Log In"
+            typeStyle="large"
+            color="green" 
+            left          
+            handleClick={formik.handleSubmit}
+          />
+        </Card>
+        <Button left title="Sign Up" typeStyle="large" handleClick={handleSignUp} />
+      </>
+      }
+     
     </Container>
   );
 };

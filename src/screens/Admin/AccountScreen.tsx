@@ -4,18 +4,18 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { Title,Container,HeaderButton as CustomHeaderButton, Card, Input, Button } from "../../components";
 import { useFormik } from "formik";
 import { AccountInitialValue, AccountValidations } from "./InitialValuesAndValidation";
+import { updateUser } from "../../shared";
 
 const AcountScreen = (props: any) => {
   const formik = useFormik({
     initialValues: AccountInitialValue,
     validationSchema: AccountValidations,
     onSubmit: async (values, formikBag) => {
-      console.log(values);
+      const response = await updateUser(values)
+      if(response)props.navigation.navigate("ListGame");
     },
   });
-  const handleSignUp = () => {
-    props.navigation.navigate("Register");
-  };
+  
   return <Container>
   <Title fontsize="40" centered>Update</Title>
   <Card>

@@ -5,6 +5,7 @@ import { msgError,msgSuccess } from "./helpers/msg";
 import {loginUser} from "./services/loginLogout"
 import {createUser} from "./services/createUser"
 import { resetPassword } from "./services/resetPassword";
+import { updateUser } from "./services/account";
 export {
   convertToReal,
   createSession,
@@ -13,5 +14,6 @@ export {
   msgSuccess,
   loginUser,  
   createUser,
-  resetPassword
+  resetPassword,
+  updateUser
 }

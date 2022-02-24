@@ -1,6 +1,6 @@
 import { API } from "./api";
-import Toast from 'react-native-toast-message';
-import { msgError } from "../helpers/msg";
+import { msgError,msgSuccess } from "../helpers/msg";
+
 export const createUser = async (
   user: string,
   email: string,
@@ -10,9 +10,7 @@ export const createUser = async (
   try {
     let response = await API.post(`/user/create`, data);   
     if (response.status === 200) {
-        Toast.show({type: 'success',
-        text1: 'Sucess!',
-        text2: "User registered successfully!"});
+      msgSuccess("User registered successfully!");        
       return true;
     }
     if (response.status === 404) {
