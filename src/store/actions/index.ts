@@ -1,4 +1,4 @@
-import { AUTHENTICATE,login,auth } from "./auth";
+import { AUTHENTICATE,login,logout,auth } from "./auth";
 
-export const actions ={auth,login}
-export const type = {AUTHENTICATE}
+export const actions ={auth,login,logout}
+export const typeAction = {AUTHENTICATE}

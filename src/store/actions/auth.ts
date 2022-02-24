@@ -1,4 +1,4 @@
-import { createSession, loginUser } from "../../shared";
+import { createSession, loginUser,destroySession } from "../../shared";
 
 export const AUTHENTICATE = "AUTHENTICATE";
 
@@ -17,3 +17,11 @@ export const login = (email:string, password:string) => {
       }
     };
 };
+
+export const logout = ()=>{
+  return async(dispatch:any)=>{
+    destroySession();
+    dispatch({ type: AUTHENTICATE, token: null }); 
+    return;
+  }
+}

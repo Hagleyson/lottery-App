@@ -1,5 +1,7 @@
+import { AUTHENTICATE } from './../../store/actions/auth';
 import axios from "axios";
-import { /*destroySession,*/ getSession } from "../helpers/localStorage";
+import { getSession, destroySession  } from "../helpers/localStorage";
+import { store } from '../../store/index';
 
 const API = axios.create({
   baseURL: "http://192.168.1.12:3333",
@@ -20,16 +22,19 @@ API.interceptors.request.use(async(config) => {
 });
 
 API.interceptors.response.use(
-  (value) => {
+  (value) => {      
     return Promise.resolve(value);
   },
-  (error) => {
-    const { isAxiosError = false, response = null } = error;
-    if (isAxiosError && response && response.status === 403) {
-      // destroySession();
-      return Promise.reject(error);
+  (error) => {   
+    const { isAxiosError = false, response = null } = error;       
+    if(isAxiosError && response.data.errors){
+      destroySession();
+      store.dispatch({type:AUTHENTICATE,token:null})
+      throw new Error("Expired section!")
     }
     return response;
   }
 );
+
+
 export { API };

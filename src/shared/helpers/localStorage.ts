@@ -1,5 +1,7 @@
+import React from "react"
 export const TOKEN = "lotteryToken";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 export const createSession = (token:string) => {
     AsyncStorage.setItem(
@@ -18,10 +20,9 @@ export async function getSession () {
   return null;
 }
 
-export async function destroySession(msg?: string) {
+export async function destroySession() {
   try {
-    window.localStorage.clear();
-    window.location.reload();
+    AsyncStorage.removeItem(TOKEN)           
   } catch (error) {
     throw new Error("destroy session error");
   }

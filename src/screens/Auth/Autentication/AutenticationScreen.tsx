@@ -56,6 +56,7 @@ const AutenticationScreen = (props: any) => {
       {isLoading ?
       <Loader/>:
       <>
+       
         <Title fontsize="40" centered>Authentication</Title>
         <Card>
           <Input

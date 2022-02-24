@@ -1,6 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {createDrawerNavigator} from "@react-navigation/drawer";
+import {createDrawerNavigator, DrawerItemList} from "@react-navigation/drawer";
 
 import { Platform, View, SafeAreaView, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -20,6 +20,8 @@ import {
   RecoveryScreen,
   RegisterScreen,
 } from "../screens/Index";
+import { useDispatch } from "react-redux";
+import { actions } from "../store";
 
 const defaultNavOptions = {
   headerStyle: {
@@ -99,13 +101,30 @@ const drawerConfig={
     
   },       
   drawerActiveTintColor:theme.greenLemon,
-  headerShown: false ,
-  
-  
+  headerShown: false ,  
 }
+
 export const GameDrawerNavigator = () => {  
   return (
-    <GameDrawerNav.Navigator  screenOptions={{...drawerConfig,...defaultNavOptions}}>
+    <GameDrawerNav.Navigator 
+    drawerContent={(props) => {
+      const dispatch = useDispatch()
+      return (
+        <View style={{ flex: 1, paddingTop: 30 }}>
+          <SafeAreaView >
+            <DrawerItemList {...props} />
+            <Button
+              title="Logout"
+              color={theme.greenLemon}
+              onPress={() => {          
+                dispatch(actions.logout())                      
+              }}
+            />
+          </SafeAreaView>
+        </View>
+      );
+    }}
+    screenOptions={{...drawerConfig,...defaultNavOptions}}>
       <GameDrawerNav.Screen
         name="Game"
         component={GameNavigator}

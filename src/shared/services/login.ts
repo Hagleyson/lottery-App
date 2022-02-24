@@ -1,10 +1,10 @@
 import { API } from "./api";
-import Toast from 'react-native-toast-message';
-import { msgError,msgSuccess } from '../helpers/msg'
+import { msgError } from '../helpers/msg'
+
 export const loginUser = async (email: string, password: string) => {
   const data = JSON.stringify({ email, password });
   try {
-    let response = await API.post(`login`, data);    
+    let response = await API.post(`login`, data);      
     if (response.status === 200) {      
       return response.data.token;
     }
@@ -17,7 +17,7 @@ export const loginUser = async (email: string, password: string) => {
       );
     }
     throw new Error();
-  } catch (error) {    
+  } catch (error) {        
     msgError(`${error}`)    
     return false;
   }

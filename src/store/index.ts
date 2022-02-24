@@ -3,7 +3,7 @@ import { applyMiddleware } from 'redux';
 import { createStore } from 'redux';
 import { combineReducers } from 'redux';
 import auth from "./reducers/auth";
-import { actions,type } from "./actions/";
+import { actions,typeAction } from "./actions/";
 
 const rootReducer = combineReducers({
     auth:auth
@@ -13,4 +13,4 @@ const store = createStore(rootReducer,applyMiddleware(ReduxThunk))
 type RooStateType = ReturnType<typeof store.getState>
 
 
-export {store,auth,actions,type, RooStateType}
+export {store,auth,actions,typeAction, RooStateType}
