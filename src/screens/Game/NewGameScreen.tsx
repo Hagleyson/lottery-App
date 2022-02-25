@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Platform,ScrollView } from "react-native";
 
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -7,17 +7,18 @@ import { Title,HeaderButton as CustomHeaderButton, Container, Button,ModalCompon
 import { msgInfo,msgSuccess } from "../../shared/helpers/msg";
 import { RooStateType,actions } from "../../store";
 
-const NewGameScreen = (props: any) => {  
+const NewGameScreen = () => {  
   const [isLoading, setIsLoading] = useState(false)
   const [modalIsOpen,setModalIsOpen] = useState(false)  
-  const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);  
-  const games = useSelector((state:RooStateType) => state.gameList.list.types)
-  console.log(games)
+  const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);    
+  
+
+  const games = useSelector((state:RooStateType) => state.gameList.list.types)  
   const currentGame  = useSelector((state:RooStateType)=>state.gameList.currentGame)
   
   const dispatch =useDispatch()
   
-  const handlerSelectNumber = (number: number) => {
+  const handlerSelectNumber = useCallback((number: number) => {
     let currentNumberSelected: number[] = [...selectedNumbers];
 
     if (currentNumberSelected.some((element: number) => element === number)) {
@@ -30,9 +31,9 @@ const NewGameScreen = (props: any) => {
       currentNumberSelected.push(number);
     }
     setSelectedNumbers(currentNumberSelected);
-  };
+  },[selectedNumbers,currentGame]);
 
-  const handleComplete = () => {
+  const handleComplete = useCallback(() => {
     let currentNumberSelected: number[] = [...selectedNumbers];
     if (currentNumberSelected.length === currentGame["max_number"]) {
       msgInfo("Unable to add numbers");
@@ -51,9 +52,9 @@ const NewGameScreen = (props: any) => {
       }
     }
     setSelectedNumbers(currentNumberSelected);
-  };
+  },[selectedNumbers,currentGame]);
 
-  const ListNumbersGame = () => {
+  const ListNumbersGame = useCallback(() => {
     const numbers = Array(currentGame.range).fill(0);
     return numbers.map((n, c) => {
       const itemIsSelected = !!selectedNumbers.find(
@@ -68,13 +69,13 @@ const NewGameScreen = (props: any) => {
         />
       );
     });
-  };
+  },[currentGame,selectedNumbers])
 
   const handlerClear = () => {
     setSelectedNumbers([]);
   };
 
-  const handlerAddToCar = async () => {
+  const handlerAddToCar =useCallback( async () => {
     if (selectedNumbers.length < currentGame["max_number"]) {
       const missingItem = currentGame["max_number"] - selectedNumbers.length;
       msgInfo(
@@ -92,15 +93,15 @@ const NewGameScreen = (props: any) => {
     await dispatch(actions.saveGameCart(itemCard,currentGame.price))
     msgSuccess("Game successfully added to cart")
     handlerClear();
-  };
+  },[selectedNumbers,currentGame,dispatch]);
 
-  const handleGame = (id: number) => {
+  const handleGame = useCallback((id: number) => {
     const newGame = games.filter((g: any) => g.id === id);    
     dispatch(actions.selectCurrentGame(newGame[0]));
     handlerClear();
-  };
+  },[games,dispatch]);
 
-  const ListButonsFilter = () =>
+  const ListButonsFilter = useCallback(() =>
   games.map((game: { id: number; color: string; type: string }) => (
     <Button
       typeStyle="filter"
@@ -109,10 +110,8 @@ const NewGameScreen = (props: any) => {
       handleClick={handleGame.bind(null, game.id)}
       selected={game.id === currentGame.id}
       title={game.type}
-    />     
-    // {<Button color="#c40000" selected typeStyle="filter" title="botão 1" handleClick={()=>{}}/>}
-    
-  ));
+    />        
+  )),[games,currentGame]);
 
   useEffect(()=>{   
    const loadGames =async ()=>{
