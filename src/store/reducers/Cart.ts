@@ -1,5 +1,5 @@
 
-import { SAVEGAMECART,REMOVEGAMECART} from "../actions/cart";
+import { SAVEGAMECART,REMOVEGAMECART, CLEARCART} from "../actions/cart";
 
 type cartGame = {    
     color: string,
@@ -45,6 +45,14 @@ export default (state = InitialValueGames, action:actionType) => {
             cart: state.cartGame.cart.filter((cart)=> cart.id !== action.payload.gameId)
           }
         }  
+      case CLEARCART:
+        return {
+          ...state,
+          cartGame:{
+            totalCart:0,
+            cart:[]
+          }
+        }
       default:
         return state;
     }

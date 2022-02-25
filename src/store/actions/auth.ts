@@ -1,6 +1,7 @@
 import { createSession, destroySession,loginUser } from "../../shared/";
 
 export const AUTHENTICATE = "AUTHENTICATE";
+
 import { dispatchType } from "../../shared/";
 
 export const auth = (token:string)=>{  

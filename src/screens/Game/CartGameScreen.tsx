@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
-import {  FlatList} from "react-native";
+import {  Alert, FlatList} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Title,Container,CardGame, Button, Loader } from "../../components";
-import { convertToReal, itemListType } from "../../shared";
+import { convertToReal, itemListType, msgInfo } from "../../shared/index";
+import { postGamesMade } from "../../shared/services/postGamesMade";
 import { actions, rootStateType } from "../../store";
 
-const CartGameScreen = () => {
+
+
+const CartGameScreen = (props:any) => {
   const {min_cart_value,types} = useSelector((state:rootStateType)=>state.gameList.list)    
   const {cart,totalCart} = useSelector((state:rootStateType)=>state.cartGame.cartGame) 
   
@@ -22,11 +25,44 @@ const CartGameScreen = () => {
    },[])
 
    const handleDeleteItemToCart = useCallback((id: number, price: number)=>{
-     dispatch(actions.removeGameCart(id,price))     
+    Alert.alert(
+      "Warning",
+      "Do you want to delete this game?",
+      [{
+          text: "Yes",
+          onPress: () => dispatch(actions.removeGameCart(id,price)),
+          style: "cancel"
+        },
+        { text: "No"}
+      ]
+    );     
    },[cart])
+
+   const handleSave = useCallback(
+    async () => {
+      if (totalCart < min_cart_value) {
+        msgInfo(
+          `The minimum purchase price is: ${convertToReal(
+            min_cart_value
+          )}. Lack ${convertToReal(min_cart_value - totalCart)}`
+        );
+        return;
+      } else {
+        const value = cart.map((c: any) => ({
+          game_id: c.game_id,
+          numbers: c.numbers,
+        }));
+       const response = await postGamesMade({games:value})        
+       if(response){
+         props.navigation.navigate({"name":"ListGame"})
+         dispatch(actions.clearCart())
+       }
+      }
+    },[totalCart,min_cart_value])
    
   return (
     <Container type="first" padding={0}>   
+    
       { isLoading?
      <Loader/>:               
       cart.length === 0 ? 
@@ -54,7 +90,7 @@ const CartGameScreen = () => {
         <Title >CART <Title type="light">TOTAL: {convertToReal(totalCart)}</Title></Title>                
         
       </Container>      
-      <Button title="Save" left typeStyle="save" color="green" handleClick={()=>{}}/>
+      <Button title="Save" left typeStyle="save" color="green" handleClick={handleSave}/>
     </Container>   
   );
 };

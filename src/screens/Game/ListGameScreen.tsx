@@ -26,7 +26,7 @@ const ListGameScreen = () => {
         <Container type="card">
           <FlatList
             data={games}            
-            renderItem={(itemData:itemListType) => ( 
+            renderItem={(itemData:any) => ( 
             <CardGame
                 id={itemData.item.id}
                 color={itemData.item.color}

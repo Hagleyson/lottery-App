@@ -1,7 +1,7 @@
 
 import { convertToReal } from "./helpers/convertToReal";
 import {createSession,getSession,destroySession} from "./helpers/localStorage"
-import { msgError,msgSuccess } from "./helpers/msg";
+import { msgError,msgSuccess,msgInfo } from "./helpers/msg";
 
 import {loginUser} from "./services/login"
 
@@ -12,6 +12,7 @@ import {interceptors} from "./services/api"
 import { fetchGame } from "./services/gameList";
 import { itemListType } from "./type/itemListType";
 import {dispatchType} from "./type/dispatchType"
+import { postGamesMade } from "./services/postGamesMade";
 
 export {
   convertToReal,
@@ -20,6 +21,7 @@ export {
   destroySession,
   msgError,
   msgSuccess,
+  msgInfo,
   loginUser,    
   createUser,
   resetPassword,
