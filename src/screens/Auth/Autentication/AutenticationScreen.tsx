@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -21,7 +21,7 @@ import{actions} from "../../../store"
 import { getSession } from "../../../shared";
 
 
-const AutenticationScreen = (props: any) => {
+const AutenticationScreen:FC = (props:any) => {
   const dispatch =useDispatch()
   const [isLoading,setIsLoading]=useState(false)
 

@@ -9,7 +9,7 @@ import { useSelector,useDispatch } from "react-redux";
 import {RooStateType,actions} from "../store"
 
 
-const AppNavigator = (props: any) => {
+const AppNavigator = () => {
   const [togglePage, setTogglePage] = useState(false);  
   const isAuth = useSelector((state:RooStateType) => state.auth.token);        
   const  dispatch = useDispatch()

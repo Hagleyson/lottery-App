@@ -1,9 +1,7 @@
-import React, {  useState } from "react";
-import {  FlatList, Platform} from "react-native";
-import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import { Title,Container,HeaderButton as CustomHeaderButton,ModalComponent,CardGame, Button } from "../../components";
-import { convertToReal } from "../../shared";
-
+import React from "react";
+import {  FlatList} from "react-native";
+import { Title,Container,CardGame, Button } from "../../components";
+import { convertToReal, itemListType } from "../../shared";
 const games =[
   {id:1,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
   {id:2,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
@@ -15,15 +13,23 @@ const games =[
   {id:23,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
   {id:34,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  }
 ]
-
-const CartGameScreen = (props: any) => {
+type itemType ={
+  item:{
+    id: number;
+    numbers: number[];
+    data: string;
+    value: number;
+    game: string;
+    color: string;
+  }
+}
+const CartGameScreen = () => {
   
   return (
     <Container type="first" padding={0}>                  
           <FlatList
-            data={games}
-            keyExtractor={(item:any) => item.id}
-            renderItem={(itemData:any) => ( 
+            data={games}            
+            renderItem={(itemData:itemListType) => ( 
             <CardGame
                 id={itemData.item.id}
                 color={itemData.item.color}
@@ -41,7 +47,7 @@ const CartGameScreen = (props: any) => {
 };
 
 
-export const screenOptions = (navData:any) => ({
+export const screenOptions = () => ({
   headerTitle: ()=> <Title color="white">CART</Title>,   
 })
   

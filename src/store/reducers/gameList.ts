@@ -34,18 +34,19 @@ const InitialValueGames: GameListType = {
 
 type actionType ={
     type:string;
-    payload:any
+    game?:GameListType;
+    currentGame?:Game
 }
 
 export default (state = InitialValueGames, action:actionType) => {
     switch (action.type) {    
       case LISTGAME:      
         return {
-          ...state,list:action.payload    
+          ...state,list:action.game    
         };
       case CURRENTGAME:
         return{
-            ...state,currentGame:action.payload
+            ...state,currentGame:action.currentGame
         }
       default:
         return state;

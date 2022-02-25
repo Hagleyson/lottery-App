@@ -2,19 +2,19 @@ import { fetchGame } from "../../shared";
 
 export const LISTGAME = "LISTGAME"
 export const CURRENTGAME = "CURRENTGAME"
-
+import { dispatchType } from "../../shared";
 export const fetchGameList =()=>{
-  return async (dispatch:any)=>{
+  return async (dispatch:dispatchType)=>{
     const response = await fetchGame()
     if(response){
-     await dispatch({type:LISTGAME,payload:response});
-     await dispatch({type:CURRENTGAME,payload:response.types[0]});
+     await dispatch({type:LISTGAME,game:response});
+     await dispatch({type:CURRENTGAME,currentGame:response.types[0]});
     }   
   }
 }
 
-export const selectCurrentGame =(data:any)=>{
-    return async (dispatch:any)=>{
-        dispatch({type:CURRENTGAME,payload:data})
+export const selectCurrentGame =(data:dispatchType)=>{
+    return async (dispatch:dispatchType)=>{
+        dispatch({type:CURRENTGAME,currentGame:data})
     }
 }

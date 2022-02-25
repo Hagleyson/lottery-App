@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { StyleSheet } from "react-native";
 import CardStyle from "./CardStyle";
 
-const Card: FC = (props: any) => {
+const Card: FC = (props) => {
   return <CardStyle style={styles.boxShadow}>{props.children}</CardStyle>;
 };
 

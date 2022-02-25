@@ -10,6 +10,8 @@ import { resetPassword } from "./services/resetPassword";
 import { updateUser } from "./services/account";
 import {interceptors} from "./services/api"
 import { fetchGame } from "./services/gameList";
+import { itemListType } from "./type/itemListType";
+import {dispatchType} from "./type/dispatchType"
 export {
   convertToReal,
   createSession,
@@ -22,5 +24,7 @@ export {
   resetPassword,
   updateUser,
   interceptors,
-  fetchGame
+  fetchGame, 
+  itemListType,
+  dispatchType
 }

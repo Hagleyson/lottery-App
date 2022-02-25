@@ -8,7 +8,10 @@ import {
   Title,
 } from "../../../components/index";
 
-const Home = (props: any) => {
+type propsType ={
+  redirect:()=>void
+}
+const Home = (props: propsType) => {
   useEffect(() => {
     setTimeout(() => {
       props.redirect();

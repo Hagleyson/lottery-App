@@ -4,14 +4,16 @@ import { Platform,ScrollView } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { Title,HeaderButton as CustomHeaderButton, Container, Button,ModalComponent,Ball, Loader } from "../../components";
-import { msgInfo } from "../../shared/helpers/msg";
+import { msgInfo,msgSuccess } from "../../shared/helpers/msg";
 import { RooStateType,actions } from "../../store";
 
-const NewGameScreen = (props: any) => {
+const NewGameScreen = (props: any) => {  
   const [isLoading, setIsLoading] = useState(false)
   const [modalIsOpen,setModalIsOpen] = useState(false)  
   const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
 
+  const cartGame = useSelector((state:RooStateType)=>state.cartGame)
+  console.log(cartGame)
   const game = useSelector((state:RooStateType) => state.gameList.list)
   const currentGame  = useSelector((state:RooStateType)=>state.gameList.currentGame)
   
@@ -74,10 +76,33 @@ const NewGameScreen = (props: any) => {
     setSelectedNumbers([]);
   };
 
-  useEffect(()=>{    
-    setIsLoading(true)
-    dispatch(actions.fetchGameList())
-    setIsLoading(false)
+  const handlerAddToCar = async () => {
+    if (selectedNumbers.length < currentGame["max_number"]) {
+      const missingItem = currentGame["max_number"] - selectedNumbers.length;
+      msgInfo(
+        `select more ${missingItem} ${missingItem === 1 ? "item" : "items"}.`
+      );
+      return;
+    }
+    const itemCard = {
+      id: Date.now(),
+      game_id: currentGame.id,
+      color:currentGame.color,
+      price:currentGame.price,
+      numbers: selectedNumbers.sort((a: number, b: number) => a - b),      
+    };
+    await dispatch(actions.saveGameCart(itemCard,currentGame.price))
+    msgSuccess("Game successfully added to cart")
+    handlerClear();
+  };
+
+  useEffect(()=>{   
+   const loadGames =async ()=>{
+      setIsLoading(true)
+      await dispatch(actions.fetchGameList())
+      setIsLoading(false)
+    } 
+    loadGames()
   },[])
 
   return (
@@ -103,7 +128,7 @@ const NewGameScreen = (props: any) => {
         <Container type="containerButtons">
           <Button typeStyle="normal" title="Complete game" handleClick={handleComplete}/>
           <Button typeStyle="normal" title="Clear game" handleClick={handlerClear}/>
-          <Button typeStyle="normal" color="2" title="Add to cart" handleClick={()=>{}}/>
+          <Button typeStyle="normal" color="2" title="Add to cart" handleClick={handlerAddToCar}/>
         </Container>
       {modalIsOpen ?<ModalComponent isVisible={modalIsOpen} onClose={()=>setModalIsOpen(false)}/>:<></>}
       </>}

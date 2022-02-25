@@ -3,13 +3,14 @@ import { applyMiddleware } from 'redux';
 import { createStore } from 'redux';
 import { combineReducers } from 'redux';
 
-import {auth,gameList} from "./reducers/";
+import {auth,gameList,cart} from "./reducers/";
 import { actions,typeAction } from "./actions/";
 import { interceptors } from '../shared/';
 
 const rootReducer = combineReducers({
     auth:auth,
-    gameList:gameList
+    gameList:gameList,
+    cartGame:cart
   })
 
 type RooStateType = ReturnType<typeof store.getState>
