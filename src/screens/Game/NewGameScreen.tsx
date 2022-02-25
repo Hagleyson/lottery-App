@@ -10,11 +10,9 @@ import { RooStateType,actions } from "../../store";
 const NewGameScreen = (props: any) => {  
   const [isLoading, setIsLoading] = useState(false)
   const [modalIsOpen,setModalIsOpen] = useState(false)  
-  const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
-
-  const cartGame = useSelector((state:RooStateType)=>state.cartGame)
-  console.log(cartGame)
-  const game = useSelector((state:RooStateType) => state.gameList.list)
+  const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);  
+  const games = useSelector((state:RooStateType) => state.gameList.list.types)
+  console.log(games)
   const currentGame  = useSelector((state:RooStateType)=>state.gameList.currentGame)
   
   const dispatch =useDispatch()
@@ -96,6 +94,26 @@ const NewGameScreen = (props: any) => {
     handlerClear();
   };
 
+  const handleGame = (id: number) => {
+    const newGame = games.filter((g: any) => g.id === id);    
+    dispatch(actions.selectCurrentGame(newGame[0]));
+    handlerClear();
+  };
+
+  const ListButonsFilter = () =>
+  games.map((game: { id: number; color: string; type: string }) => (
+    <Button
+      typeStyle="filter"
+      key={game.id}
+      color={game.color}
+      handleClick={handleGame.bind(null, game.id)}
+      selected={game.id === currentGame.id}
+      title={game.type}
+    />     
+    // {<Button color="#c40000" selected typeStyle="filter" title="botão 1" handleClick={()=>{}}/>}
+    
+  ));
+
   useEffect(()=>{   
    const loadGames =async ()=>{
       setIsLoading(true)
@@ -130,7 +148,11 @@ const NewGameScreen = (props: any) => {
           <Button typeStyle="normal" title="Clear game" handleClick={handlerClear}/>
           <Button typeStyle="normal" color="2" title="Add to cart" handleClick={handlerAddToCar}/>
         </Container>
-      {modalIsOpen ?<ModalComponent isVisible={modalIsOpen} onClose={()=>setModalIsOpen(false)}/>:<></>}
+      {modalIsOpen ?
+      <ModalComponent isVisible={modalIsOpen} onClose={()=>setModalIsOpen(false)}>
+        {ListButonsFilter()}        
+      </ModalComponent>:
+      <></>}
       </>}
   </Container>
   );

@@ -31,6 +31,7 @@ export const ContainerStyle = styled.View`
   ${(props:containertype)=>props.type === "card" &&`
     margin-top: 40px;
     padding:10px 0px;  
+    flex:1;
   `}
 
   ${(props:containertype)=>props.type === "header" && `
