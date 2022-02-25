@@ -1,20 +1,18 @@
 
-import { SAVEGAMECART} from "../actions/cart";
+import { SAVEGAMECART,REMOVEGAMECART} from "../actions/cart";
 
-type gameType = {   
-  id: number;
-  type: string;
-  description: string;
-  range: number;
-  price: number;
-  max_number: number;
-  color: string;   
+type cartGame = {    
+    color: string,
+    game_id: number,
+    id: number,
+    numbers: number[],
+    price:number,   
 }
 
 type GameListType = {
   cartGame:{
     totalCart:number,
-    cart:gameType[]
+    cart:cartGame[]
   }  
 };
 const InitialValueGames: GameListType = {
@@ -25,20 +23,28 @@ const InitialValueGames: GameListType = {
 };
 
 type actionType ={
-    type:string;
-    game:gameType;
-    value:number    
+  type:string;
+  payload:any
 }
 
 export default (state = InitialValueGames, action:actionType) => {
     switch (action.type) {    
       case SAVEGAMECART:      
         return {
-          ...state,cartGame: {
-            totalCart: state.cartGame.totalCart + action.value,
-            cart: [...state.cartGame.cart, action.game]
+          ...state,
+          cartGame: {
+            totalCart: state.cartGame.totalCart + action.payload.value,
+            cart: [...state.cartGame.cart, action.payload.game]
           }
-        };      
+        };    
+      case REMOVEGAMECART:  
+        return {
+          ...state,
+          cartGame:{
+            totalCart:state.cartGame.totalCart - action.payload.value,
+            cart: state.cartGame.cart.filter((cart)=> cart.id !== action.payload.gameId)
+          }
+        }  
       default:
         return state;
     }

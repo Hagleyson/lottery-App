@@ -1,10 +1,8 @@
 export type itemListType ={
     item:{
-      id: number;
-      numbers: number[];
-      data: string;
-      value: number;
-      game: string;
-      color: string;
+      id: number,      
+      game_id: number,      
+      price:number,
+      numbers: number[],      
     }
 }

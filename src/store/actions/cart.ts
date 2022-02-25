@@ -1,16 +1,23 @@
 export const SAVEGAMECART = "SAVEGAMECART"
+export const REMOVEGAMECART = "REMOVEGAMECART"
 
-type itemGame ={
-  id:number,
-  game_id:number,
-  color:string,
+type item={
+  id: number,      
+  game_id: number,      
   price:number,
-  numbers:number[]
+  numbers: number[],      
 }
 
-export const saveGameCart =(game:itemGame,value:number)=>{
+export const saveGameCart =(game:item,value:number)=>{
   return async (dispatch:({})=>void)=>{        
-     await dispatch({type:SAVEGAMECART,game,value});
+     await dispatch({type:SAVEGAMECART,payload:{game,value}});
+          
+  }
+}
+
+export const removeGameCart =(gameId:number,value:number)=>{
+  return async (dispatch:({})=>void)=>{        
+     await dispatch({type:REMOVEGAMECART,payload:{gameId,value}});
           
   }
 }

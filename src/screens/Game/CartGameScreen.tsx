@@ -1,45 +1,58 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {  FlatList} from "react-native";
-import { Title,Container,CardGame, Button } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
+import { Title,Container,CardGame, Button, Loader } from "../../components";
 import { convertToReal, itemListType } from "../../shared";
-const games =[
-  {id:1,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:2,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:3,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:11,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:21,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:31,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:12,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:23,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:34,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  }
-]
-type itemType ={
-  item:{
-    id: number;
-    numbers: number[];
-    data: string;
-    value: number;
-    game: string;
-    color: string;
-  }
-}
+import { actions, rootStateType } from "../../store";
+
 const CartGameScreen = () => {
+  const {min_cart_value,types} = useSelector((state:rootStateType)=>state.gameList.list)    
+  const {cart,totalCart} = useSelector((state:rootStateType)=>state.cartGame.cartGame) 
   
+  const [isLoading,setIsLoading] = useState(false)
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    setIsLoading(true)
+    const loadGames =async ()=>{       
+       await dispatch(actions.fetchGameList())       
+     } 
+    setIsLoading(false)
+     loadGames()
+   },[])
+
+   const handleDeleteItemToCart = useCallback((id: number, price: number)=>{
+     dispatch(actions.removeGameCart(id,price))     
+   },[cart])
+   
   return (
-    <Container type="first" padding={0}>                  
-          <FlatList
-            data={games}            
-            renderItem={(itemData:itemListType) => ( 
-            <CardGame
+    <Container type="first" padding={0}>   
+      { isLoading?
+     <Loader/>:               
+      cart.length === 0 ? 
+      <Container type="first">
+        <Title>Empty cart!</Title>
+      </Container>
+      :
+        <FlatList
+        data={cart}            
+        renderItem={(itemData:itemListType) =>{
+            const game = types.filter((type:any)=> (type.id  === itemData.item.game_id))[0]                        
+            return <CardGame
                 id={itemData.item.id}
-                color={itemData.item.color}
+                color={game.color}
                 numbers={itemData.item.numbers}                
-                price={itemData.item.value}
-                name={"Hagleyson"}
-            />)}
-          />        
+                price={itemData.item.price}
+                name={game.type}
+                onDelete={()=>handleDeleteItemToCart(itemData.item.id,itemData.item.price)}
+            />
+        }}
+      /> 
+      }
+                 
       <Container type="textCart">
-        <Title >CART <Title type="light">TOTAL: {convertToReal(1000)}</Title></Title>                  
+        <Title >CART <Title type="light">TOTAL: {convertToReal(totalCart)}</Title></Title>                
+        
       </Container>      
       <Button title="Save" left typeStyle="save" color="green" handleClick={()=>{}}/>
     </Container>   

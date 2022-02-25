@@ -4,8 +4,9 @@ import { Platform,ScrollView } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { Title,HeaderButton as CustomHeaderButton, Container, Button,ModalComponent,Ball, Loader } from "../../components";
+import { itemListType } from "../../shared";
 import { msgInfo,msgSuccess } from "../../shared/helpers/msg";
-import { RooStateType,actions } from "../../store";
+import { rootStateType,actions } from "../../store";
 
 const NewGameScreen = () => {  
   const [isLoading, setIsLoading] = useState(false)
@@ -13,8 +14,8 @@ const NewGameScreen = () => {
   const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);    
   
 
-  const games = useSelector((state:RooStateType) => state.gameList.list.types)  
-  const currentGame  = useSelector((state:RooStateType)=>state.gameList.currentGame)
+  const games = useSelector((state:rootStateType) => state.gameList.list.types)  
+  const currentGame  = useSelector((state:rootStateType)=>state.gameList.currentGame)
   
   const dispatch =useDispatch()
   
@@ -85,8 +86,7 @@ const NewGameScreen = () => {
     }
     const itemCard = {
       id: Date.now(),
-      game_id: currentGame.id,
-      color:currentGame.color,
+      game_id: currentGame.id,      
       price:currentGame.price,
       numbers: selectedNumbers.sort((a: number, b: number) => a - b),      
     };

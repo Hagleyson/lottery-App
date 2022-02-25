@@ -13,11 +13,11 @@ const rootReducer = combineReducers({
     cartGame:cart
   })
 
-type RooStateType = ReturnType<typeof store.getState>
+type rootStateType = ReturnType<typeof store.getState>
 export const store = createStore(rootReducer,applyMiddleware(ReduxThunk))
 
 interceptors(store)
 
 
 
-export {auth,actions,typeAction, RooStateType}
+export {auth,actions,typeAction, rootStateType}
