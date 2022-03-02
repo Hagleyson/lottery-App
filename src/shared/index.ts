@@ -14,6 +14,7 @@ import { itemListType } from "./type/itemListType";
 import {dispatchType} from "./type/dispatchType"
 import { postGamesMade } from "./services/postGamesMade";
 import {listGamesMade} from "./services/listGameMade"
+import {getDataUser} from "./services/getDataUsers"
 export {
   convertToReal,
   createSession,
@@ -31,5 +32,6 @@ export {
   itemListType,
   dispatchType,
   postGamesMade,
-  listGamesMade
+  listGamesMade,
+  getDataUser
 }

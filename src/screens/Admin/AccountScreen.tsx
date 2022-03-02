@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Platform } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import { Title,Container,HeaderButton as CustomHeaderButton, Card, Input, Button } from "../../components";
+import { Title,Container,HeaderButton as CustomHeaderButton, Card, Input, Button, Loader } from "../../components";
 import { useFormik } from "formik";
 import { AccountInitialValue, AccountValidations } from "./InitialValuesAndValidation";
-import { updateUser } from "../../shared";
+import { updateUser,getDataUser } from "../../shared";
 
 const AcountScreen = (props: any) => {
+  const [isLoading,setIsLoading]=useState(false)
   const formik = useFormik({
     initialValues: AccountInitialValue,
     validationSchema: AccountValidations,
@@ -16,6 +17,21 @@ const AcountScreen = (props: any) => {
     },
   });
   
+  
+  useEffect(() => {
+    const getData = async ()=>{
+      setIsLoading(true)
+      const userData = await getDataUser();     
+      formik.setFieldValue("name", userData.name);
+      formik.setFieldValue("email", userData.email);       
+      setIsLoading(false)
+    }      
+    getData()    
+  }, []);
+
+  if(isLoading){
+    return <Loader/>
+  }
   return <Container>
   <Title fontsize="40" centered>Update</Title>
   <Card>
