@@ -1,6 +1,8 @@
 
-import { SAVEGAMECART,REMOVEGAMECART, CLEARCART} from "../actions/cart";
 
+
+import { SAVEGAMECART,REMOVEGAMECART, CLEARCART,START} from "../actions/cart";
+import {saveItemsCard} from "../../shared"
 type cartGame = {    
     color: string,
     game_id: number,
@@ -15,6 +17,7 @@ type GameListType = {
     cart:cartGame[]
   }  
 };
+
 const InitialValueGames: GameListType = {
   cartGame:{
     totalCart:0,
@@ -29,30 +32,40 @@ type actionType ={
 
 export default (state = InitialValueGames, action:actionType) => {
     switch (action.type) {    
+      case START:
+        return action.payload      
       case SAVEGAMECART:      
-        return {
+        let newStatus = {
           ...state,
           cartGame: {
             totalCart: state.cartGame.totalCart + action.payload.value,
             cart: [...state.cartGame.cart, action.payload.game]
-          }
+          }}
+          saveItemsCard(newStatus)
+          
+        return {
+          ...newStatus
         };    
       case REMOVEGAMECART:  
-        return {
+        newStatus = {
           ...state,
           cartGame:{
             totalCart:state.cartGame.totalCart - action.payload.value,
             cart: state.cartGame.cart.filter((cart)=> cart.id !== action.payload.gameId)
           }
         }  
+        saveItemsCard(newStatus)        
+        return {...newStatus}
       case CLEARCART:
-        return {
+         newStatus= {
           ...state,
           cartGame:{
             totalCart:0,
             cart:[]
           }
         }
+        saveItemsCard(newStatus)
+        return {...newStatus}
       default:
         return state;
     }

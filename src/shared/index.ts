@@ -1,6 +1,6 @@
 
 import { convertToReal } from "./helpers/convertToReal";
-import {createSession,getSession,destroySession} from "./helpers/localStorage"
+import {createSession,getSession,destroySession,getItemsCart,saveItemsCard,CART} from "./helpers/localStorage"
 import { msgError,msgSuccess,msgInfo } from "./helpers/msg";
 
 import {loginUser} from "./services/login"
@@ -20,6 +20,9 @@ export {
   createSession,
   getSession,
   destroySession,
+  getItemsCart,
+  saveItemsCard,
+  CART,
   msgError,
   msgSuccess,
   msgInfo,

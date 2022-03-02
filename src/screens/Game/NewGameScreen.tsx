@@ -4,7 +4,7 @@ import { Platform,ScrollView } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { Title,HeaderButton as CustomHeaderButton, Container, Button,ModalComponent,Ball, Loader } from "../../components";
-import { itemListType } from "../../shared";
+import { getItemsCart, itemListType } from "../../shared";
 import { msgInfo,msgSuccess } from "../../shared/helpers/msg";
 import { rootStateType,actions } from "../../store";
 
@@ -123,6 +123,9 @@ const NewGameScreen = () => {
     loadGames()
   },[])
 
+  useEffect(()=>{
+    dispatch(actions.initializeCart())
+  },[])
   return (
     <Container type="first">     
      { isLoading?
