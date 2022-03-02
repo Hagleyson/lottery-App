@@ -3,7 +3,7 @@ import {  Alert, FlatList} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Title,Container,CardGame, Button, Loader } from "../../components";
 import { convertToReal, itemListType, msgInfo } from "../../shared/index";
-import { postGamesMade } from "../../shared/services/postGamesMade";
+import { postGamesMade } from "../../shared/";
 import { actions, rootStateType } from "../../store";
 
 
@@ -54,8 +54,9 @@ const CartGameScreen = (props:any) => {
         }));
        const response = await postGamesMade({games:value})        
        if(response){
-         props.navigation.navigate({"name":"ListGame"})
+         props.navigation.push("ListGame")
          dispatch(actions.clearCart())
+         
        }
       }
     },[totalCart,min_cart_value])
@@ -98,6 +99,7 @@ const CartGameScreen = (props:any) => {
 
 export const screenOptions = () => ({
   headerTitle: ()=> <Title color="white">CART</Title>,   
+  
 })
   
 

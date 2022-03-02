@@ -9,14 +9,14 @@ import { convertToReal } from "../../shared";
 type propsType={
     color?: string;
     isHome?: boolean;
-    numbers: number[];
+    numbers: number[]|string;
     price: number;
     name?: string;
     id: number;
     onDelete?: (id: number, price: number) => void;
 }
 const CardGame =(props:propsType)=>{
-  const formattedNumbers = props.numbers.map((n) => (n < 10 ? `0${n}` : `${n}`));
+  const formattedNumbers = typeof props.numbers === "string"? props.numbers: props.numbers.map((n) => (n < 10 ? `0${n}` : `${n}`));
     return  <CardGamesStyle isHome>
    
     {!props.isHome ? (
@@ -27,7 +27,7 @@ const CardGame =(props:propsType)=>{
 
     <ContentCard isHome={props.isHome} >      
       <Title fontsize="20">
-        {formattedNumbers.join(", ")}
+        {typeof formattedNumbers === "string"?formattedNumbers :formattedNumbers.join(", ")}
       </Title>
       {props.isHome ? <Title type="light" fontsize="17">{`20/01/2022 - (${"R$ 2,50"})`}</Title> : null}
       <Title fontsize= "20"  color={props.color}>

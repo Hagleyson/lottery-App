@@ -13,6 +13,8 @@ API.interceptors.request.use(async(config) => {
   const sessionObject = await getSession();  
   if (sessionObject) {
     config.headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${sessionObject}`,
     };
   }
