@@ -17,6 +17,7 @@ const NewGameScreen = () => {
   const games = useSelector((state:rootStateType) => state.gameList.list.types)  
   const currentGame  = useSelector((state:rootStateType)=>state.gameList.currentGame)
   
+  
   const dispatch =useDispatch()
   
   const handlerSelectNumber = useCallback((number: number) => {
@@ -159,17 +160,19 @@ const NewGameScreen = () => {
 
 export const screenOptions = (navData:any) => ({
   headerTitle: ()=> <Title color="white">New Game</Title>,     
-  headerRight: () => (
-    <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-      <Item
-        title="Cart"
-        iconName={Platform.OS === "android" ? "md-cart" : "ios-cart"}
-        
-        onPress={() => {
-          navData.navigation.navigate({"name":"CartGame"});
-        }}
-      />
-    </HeaderButtons>
-  ),
+  headerRight: () => {
+    const totalItemCart = useSelector((state:rootStateType)=>state.cartGame.cartGame).cart.length        
+    return (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title="Cart"
+          iconName={Platform.OS === "android" ? "md-cart" : "ios-cart"}        
+          onPress={() => {
+            navData.navigation.navigate({"name":"CartGame"});
+          }}
+        >{totalItemCart>0 && totalItemCart}</Item>
+      </HeaderButtons>
+    )
+  },
 })
 export default NewGameScreen;

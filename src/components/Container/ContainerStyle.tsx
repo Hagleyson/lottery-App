@@ -66,6 +66,10 @@ export const ContainerStyle = styled.View`
     flex-direction: row;  
     justify-content: space-between;
   `}
-  
+  ${(props:containertype)=>props.type === "headerButton" &&`
+    position:relative; 
+    padding:0px;
+    background-color: ${theme.greenLemon};  
+  `}
   
 `;

@@ -45,4 +45,14 @@ export const TitleStyle = styled.Text`
     font-size:14px;
     color:${theme.error}
   `}
+  ${(props:propsType)=>props.type === "textValueCart" &&`
+    position: absolute;
+    width: 29px;
+    top:-16px;
+    padding:0;
+    right: 0px;
+    font-size:14px;        
+    text-align: center; 
+  `}
+ 
 `;
