@@ -7,7 +7,7 @@ import {
   Link,
   Loader,
   Title,
-} from "../../../components/index";
+} from "@Components/index";
 
 import {
   LoginInitialValues,
@@ -17,8 +17,8 @@ import {
 import { useDispatch } from "react-redux";
 
 import { useFormik } from "formik";
-import{actions} from "../../../store"
-import { getSession } from "../../../shared";
+import{actions} from "@store/index"
+import { getSession } from "@shared/index";
 
 
 const AutenticationScreen:FC = (props:any) => {

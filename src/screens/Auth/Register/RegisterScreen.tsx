@@ -6,7 +6,7 @@ import {
   Container,
   Input,
   Title,
-} from "../../../components/index";
+} from "@Components/index";
 
 import { useFormik } from "formik";
 
@@ -14,7 +14,7 @@ import {
   RegisterInitialValues,
   RegisterValidations,
 } from "./InitialValuesAndValidation";
-import { createUser } from "../../../shared";
+import { createUser } from "@shared/index";
 
 const RegisterScreen = (props: any) => {
   const formik = useFormik({

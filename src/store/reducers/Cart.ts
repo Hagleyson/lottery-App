@@ -1,8 +1,7 @@
-
-
-
 import { SAVEGAMECART,REMOVEGAMECART, CLEARCART,START} from "../actions/cart";
-import {saveItemsCard} from "../../shared"
+
+import {saveItemsCard} from "@shared/index"
+
 type cartGame = {    
     color: string,
     game_id: number,

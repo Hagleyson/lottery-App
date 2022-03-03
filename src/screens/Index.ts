@@ -15,7 +15,7 @@ import AutenticationScreen from "./Auth/Autentication/AutenticationScreen";
 import RecoveryScreen from "./Auth/Recovery/RecoveryScreen";
 import RegisterScreen from "./Auth/Register/RegisterScreen";
 import Home from "./Auth/Home/Home";
-import { ModalComponent } from "../components";
+import { ModalComponent } from "../Components";
 
 export {
   AccountScreen,

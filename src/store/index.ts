@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 
 import {auth,gameList,cart} from "./reducers/";
 import { actions,typeAction } from "./actions/";
-import { interceptors } from '../shared/';
+import { interceptors } from '@shared/index';
 
 const rootReducer = combineReducers({
     auth:auth,

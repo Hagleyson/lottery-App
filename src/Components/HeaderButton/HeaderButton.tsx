@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { HeaderButton } from "react-navigation-header-buttons";
 
 import { Ionicons } from "@expo/vector-icons";
-import { theme } from "../../GlobalStyle";
+import { theme } from "../../globalStyle";
 
 import  Container  from "../Container/Contaneir";
 import  Title  from "../Title/Title";

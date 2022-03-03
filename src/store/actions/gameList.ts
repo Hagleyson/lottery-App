@@ -1,8 +1,7 @@
-import { fetchGame } from "../../shared";
+import { fetchGame,dispatchType } from "@shared/index";
 
 export const LISTGAME = "LISTGAME"
 export const CURRENTGAME = "CURRENTGAME"
-import { dispatchType } from "../../shared";
 
 export const fetchGameList =()=>{
   return async (dispatch:dispatchType)=>{

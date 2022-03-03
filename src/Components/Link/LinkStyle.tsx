@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { theme } from "../../GlobalStyle/theme";
+import { theme } from "../../globalStyle/theme";
 
 export const LinkStyle = styled.View`
   justify-content: center;

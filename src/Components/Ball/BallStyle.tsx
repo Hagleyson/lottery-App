@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { theme } from "../../GlobalStyle";
+import { theme } from "../../globalStyle";
 type BallType ={
     color?:string
 }

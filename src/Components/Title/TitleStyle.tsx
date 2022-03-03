@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { theme } from "../../GlobalStyle/theme";
+import { theme } from "../../globalStyle/theme";
 
 type propsType = {
   fontsize?: string;

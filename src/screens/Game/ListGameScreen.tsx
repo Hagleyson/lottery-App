@@ -2,21 +2,10 @@ import React, {  useCallback, useEffect, useState } from "react";
 import {  FlatList, Platform} from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useDispatch, useSelector } from "react-redux";
-import { Title,Container,HeaderButton as CustomHeaderButton,ModalComponent,CardGame, Button, Loader } from "../../components";
-import { listGamesMade } from "../../shared";
-import { actions, rootStateType } from "../../store";
-// import { itemListType } from "../../shared";
-const games =[
-  {id:1,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:2,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:3,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:11,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:21,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:31,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:12,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:23,numbers:[1, 2, 3,4,5,6,7],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  },
-  {id:34,numbers:[1, 2, 3,4,5,6,7,255,24,2,3,4,343,4],data:"30/11/2021",value:2.50,game:"Lotofacil",color:"#7F3992"  }
-]
+import { Title,Container,HeaderButton as CustomHeaderButton,ModalComponent,CardGame, Button, Loader } from "@Components/index";
+import { listGamesMade } from "@shared/index";
+import { actions, rootStateType } from "@store/index";
+
 
 const ListGameScreen = () => {
   const {types} = useSelector((state:rootStateType)=>state.gameList.list)  

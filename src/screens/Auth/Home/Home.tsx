@@ -1,12 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Button,
-  Card,
-  Container,
-  Input,
-  Link,
-  Title,
-} from "../../../components/index";
+import {Container,Title} from "@Components/index";
 
 type propsType ={
   redirect:()=>void

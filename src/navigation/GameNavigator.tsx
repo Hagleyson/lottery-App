@@ -5,7 +5,7 @@ import {createDrawerNavigator, DrawerItemList} from "@react-navigation/drawer";
 import { Platform, View, SafeAreaView, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import {theme} from "../GlobalStyle/index"
+import {theme} from "@globalStyle/index"
 
 import {
   AccountScreen,

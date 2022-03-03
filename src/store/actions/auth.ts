@@ -1,8 +1,6 @@
-import { createSession, destroySession,loginUser } from "../../shared/";
+import { createSession, destroySession,loginUser,dispatchType } from "@shared/index";
 
 export const AUTHENTICATE = "AUTHENTICATE";
-
-import { dispatchType } from "../../shared/";
 
 export const auth = (token:string)=>{  
   return async (dispatch:dispatchType) => { 

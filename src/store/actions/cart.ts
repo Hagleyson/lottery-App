@@ -1,5 +1,5 @@
-import { getItemsCart } from '../../shared';
-import { dispatchType } from './../../shared/type/dispatchType';
+import { getItemsCart,dispatchType } from '@shared/index';
+
 export const SAVEGAMECART = "SAVEGAMECART"
 export const REMOVEGAMECART = "REMOVEGAMECART"
 export const CLEARCART ="CLEARCART"

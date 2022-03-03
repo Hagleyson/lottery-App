@@ -3,7 +3,7 @@ import React from "react";
 import { ContainerButton, TextButton } from "./ButtonStyle";
 import {  TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { theme } from "../../GlobalStyle";
+import { theme } from "../../globalStyle";
 
 type propsType = {
   typeStyle?: string;

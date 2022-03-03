@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {  Alert, FlatList} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { Title,Container,CardGame, Button, Loader } from "../../components";
-import { convertToReal, itemListType, msgInfo } from "../../shared/index";
-import { postGamesMade } from "../../shared/";
-import { actions, rootStateType } from "../../store";
+import { Title,Container,CardGame, Button, Loader } from "@Components/index";
+import { convertToReal, itemListType, msgInfo,postGamesMade } from "@shared/index";
+import { actions, rootStateType } from "@store/index";
 
 
 

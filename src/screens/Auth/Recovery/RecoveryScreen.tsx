@@ -6,13 +6,13 @@ import {
   Input,
   Link,
   Title,
-} from "../../../components/index";
+} from "@Components/index";
 import { useFormik } from "formik";
 import {
   RecoveryInitialValue,
   RecoveryValidations,
 } from "./InitialValuesAndValidation";
-import { resetPassword } from "../../../shared";
+import { resetPassword } from "@shared/index";
 
 const RecoveryScreen = (props: any) => {
   const formik = useFormik({

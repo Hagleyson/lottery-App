@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { theme } from "../../GlobalStyle/theme";
+import { theme } from "../../globalStyle/theme";
 
 const CardStyle = styled.View`
   width: 100%;

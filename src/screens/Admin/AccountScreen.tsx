@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Platform } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import { Title,Container,HeaderButton as CustomHeaderButton, Card, Input, Button, Loader } from "../../components";
+import { Title,Container,HeaderButton as CustomHeaderButton, Card, Input, Button, Loader } from "@Components/index";
 import { useFormik } from "formik";
 import { AccountInitialValue, AccountValidations } from "./InitialValuesAndValidation";
-import { updateUser,getDataUser } from "../../shared";
+import { updateUser,getDataUser } from "@shared/index";
 
 const AcountScreen = (props: any) => {
   const [isLoading,setIsLoading]=useState(false)
   const formik = useFormik({
     initialValues: AccountInitialValue,
     validationSchema: AccountValidations,
-    onSubmit: async (values, formikBag) => {
+    onSubmit: async (values) => {
       const response = await updateUser(values)
       if(response)props.navigation.navigate("ListGame");
     },
