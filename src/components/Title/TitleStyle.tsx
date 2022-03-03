@@ -53,6 +53,7 @@ export const TitleStyle = styled.Text`
     right: 0px;
     font-size:14px;        
     text-align: center; 
+    color:${theme.white}
   `}
  
 `;

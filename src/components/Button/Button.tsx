@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ContainerButton, TextButton } from "./ButtonStyle";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import {  TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from "../../GlobalStyle";
 
